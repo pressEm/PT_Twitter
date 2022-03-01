@@ -6,4 +6,4 @@
 * Филонова В.
 * Обухова Э.В.
 ### Сылки:
-- [Trello] (https://trello.com/202297922533)
+- [Trello](https://trello.com/202297922533)
