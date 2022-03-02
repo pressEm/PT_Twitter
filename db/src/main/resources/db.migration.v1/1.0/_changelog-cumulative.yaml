@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - preConditions:
+      - dbms:
+          type: postgresql
+  - changeSet:
+      id: TW-EO-202203021225
+      author: PaulRobinson
+      comment: TODO
+      changes:
+        - sqlFile:
+            path: TW-EO-202203021225.sql
+            relativeToChangelogFile: true
