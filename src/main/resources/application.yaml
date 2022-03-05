@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8081
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres
@@ -13,4 +13,4 @@ spring:
     properties:
       hibernate.dialect: org.hibernate.dialect.PostgreSQL10Dialect
   liquibase:
-    change-log: classpath:db/migration/v1/changelog.yaml
+    change-log: classpath:db.migration/changelog.yaml

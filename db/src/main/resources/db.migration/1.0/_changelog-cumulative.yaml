@@ -2,3 +2,11 @@ databaseChangeLog:
   - preConditions:
       - dbms:
           type: postgresql
+  - changeSet:
+      id: TP-001-202203041618
+      author: EllinaObukhova
+      comment: Create Initial DB Structure
+      changes:
+        - sqlFile:
+            path: TP-001-202203041618.sql
+            relativeToChangelogFile: true
