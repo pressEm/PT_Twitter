@@ -31,7 +31,7 @@ CREATE TABLE tp_twitter.comments(
     comment_id  SERIAL PRIMARY KEY ,
     post_id     INTEGER REFERENCES tp_twitter.posts(post_id),
     user_id     INTEGER REFERENCES tp_twitter.users(user_id),
-    date        TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
+    comment_date        TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
     content     VARCHAR (500)
 );
 
@@ -44,7 +44,8 @@ CREATE TABLE tp_twitter.likes(
 CREATE TABLE tp_twitter.subscriptions(
     subscription_id SERIAL PRIMARY KEY ,
     user_id         INTEGER REFERENCES tp_twitter.users(user_id),
-    subscriber_id   INTEGER REFERENCES tp_twitter.users(user_id)
+    subscriber_id   INTEGER REFERENCES tp_twitter.users(user_id),
+    is_accepted     BOOLEAN
 );
 
 CREATE TABLE tp_twitter.tags(
