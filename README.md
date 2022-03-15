@@ -7,3 +7,4 @@
 * Обухова Э.В.
 ### Сылки:
 - [Trello](https://trello.com/202297922533)
+- [Miro](https://miro.com/app/board/uXjVOGN-Ch4=/)
