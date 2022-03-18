@@ -8,4 +8,4 @@
 ### Сылки:
 - [Trello](https://trello.com/202297922533)
 - [Miro](https://miro.com/app/board/uXjVOGN-Ch4=/)
-- [T3_ver10032022.docx](https://github.com/pressEm/PT_Twitter/files/8301876/T3_ver10032022.docx)
+- [Техническое задание](https://github.com/pressEm/PT_Twitter/files/8301876/T3_ver10032022.docx)
