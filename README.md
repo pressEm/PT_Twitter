@@ -9,3 +9,4 @@
 - [Trello](https://trello.com/202297922533)
 - [Miro](https://miro.com/app/board/uXjVOGN-Ch4=/)
 - [Техническое задание](https://github.com/pressEm/PT_Twitter/files/8301876/T3_ver10032022.docx)
+- [Курсовая работа](https://github.com/pressEm/PT_Twitter/files/8305183/default.docx)
