@@ -8,5 +8,6 @@
 ### Сылки:
 - [Trello](https://trello.com/202297922533)
 - [Miro](https://miro.com/app/board/uXjVOGN-Ch4=/)
+- [Приглашение на Miro](https://miro.com/app/board/uXjVOGN-Ch4=/?invite_link_id=962277482334)
 - [Техническое задание](https://github.com/pressEm/PT_Twitter/files/8309808/T3_ver19032022.docx)
 - [Курсовая работа](https://github.com/pressEm/PT_Twitter/files/8305183/default.docx)
