@@ -1,6 +1,8 @@
 package vsu.javablog.db.entities;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
@@ -11,16 +13,17 @@ import java.io.Serializable;
 import java.util.Objects;
 import java.util.Set;
 
-@Data
 @Entity
 @Table(name = "users", schema = "tp_twitter")
 @Validated
+@Getter
+@Setter
 public class UserEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    private Long id;
+    private Integer id;
 
     @Column(name = "login")
     @NotEmpty(message = "Username can not be empty")
@@ -47,74 +50,74 @@ public class UserEntity implements Serializable {
     @OneToMany(mappedBy="userId")
     private Set<CommentEntity> comments;
 
-    public UserEntity() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-//    public String getProfilePicture() {
-//        return profilePicture;
+//    public UserEntity() {
 //    }
-
-    public RoleEntity getRoles() {
-        return role;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-//    public void setProfilePicture(String profilePicture) {
-//        this.profilePicture = profilePicture;
-//    }
-
-    public void setRoles(RoleEntity role) {
-        this.role = role;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 //
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (!(o instanceof UserEntity)) return false;
-//        UserEntity that = (UserEntity) o;
-//        return Objects.equals(getId(), that.getId()) && Objects.equals(getUsername(), that.getUsername()) && Objects.equals(getPassword(), that.getPassword()) && Objects.equals(getProfilePicture(), that.getProfilePicture()) && Objects.equals(getRoles(), that.getRoles()) && Objects.equals(getEmail(), that.getEmail());
+//    public Integer getId() {
+//        return id;
 //    }
-
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(getId(),  getUsername(), getPassword(), getProfilePicture(), getRoles(), getEmail());
+//
+//    public String getUsername() {
+//        return username;
 //    }
-
-//    @Override
-//    public String toString() {
-//        return "UserEntity{" +
-//                "id=" + id +
-//                ", username='" + username + '\'' +
-//                ", profilePicture='" + profilePicture + '\'' +
-//                ", roles=" + roles +
-//                ", email='" + email + '\'' +
-//                '}';
+//
+//    public String getPassword() {
+//        return password;
 //    }
+//
+////    public String getProfilePicture() {
+////        return profilePicture;
+////    }
+//
+//    public RoleEntity getRoles() {
+//        return role;
+//    }
+//
+//    public String getEmail() {
+//        return email;
+//    }
+//
+//    public void setUsername(String username) {
+//        this.username = username;
+//    }
+//
+//    public void setPassword(String password) {
+//        this.password = password;
+//    }
+//
+////    public void setProfilePicture(String profilePicture) {
+////        this.profilePicture = profilePicture;
+////    }
+//
+//    public void setRoles(RoleEntity role) {
+//        this.role = role;
+//    }
+//
+//    public void setEmail(String email) {
+//        this.email = email;
+//    }
+////
+////    @Override
+////    public boolean equals(Object o) {
+////        if (this == o) return true;
+////        if (!(o instanceof UserEntity)) return false;
+////        UserEntity that = (UserEntity) o;
+////        return Objects.equals(getId(), that.getId()) && Objects.equals(getUsername(), that.getUsername()) && Objects.equals(getPassword(), that.getPassword()) && Objects.equals(getProfilePicture(), that.getProfilePicture()) && Objects.equals(getRoles(), that.getRoles()) && Objects.equals(getEmail(), that.getEmail());
+////    }
+//
+////    @Override
+////    public int hashCode() {
+////        return Objects.hash(getId(),  getUsername(), getPassword(), getProfilePicture(), getRoles(), getEmail());
+////    }
+//
+////    @Override
+////    public String toString() {
+////        return "UserEntity{" +
+////                "id=" + id +
+////                ", username='" + username + '\'' +
+////                ", profilePicture='" + profilePicture + '\'' +
+////                ", roles=" + roles +
+////                ", email='" + email + '\'' +
+////                '}';
+////    }
 }
