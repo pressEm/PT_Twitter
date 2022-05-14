@@ -44,7 +44,7 @@ public class UserEntity implements Serializable {
     @NotEmpty(message = "Roles can not be null")
     private RoleEntity role;
 
-    @OneToMany(mappedBy="posts")
+    @OneToMany(mappedBy="userId")
     private Set<CommentEntity> comments;
 
     public UserEntity() {
