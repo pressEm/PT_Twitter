@@ -25,17 +25,26 @@ public class PostEntity {
     private String content;
 
     //    @Column(name = "likes")
-//    private int likes;
+    //    private int likes;
 
-
-    @ManyToOne()
-    @JoinColumn(name = "user_id")
+    @ManyToOne
+    @JoinColumn(
+        name = "user_id",
+        referencedColumnName = "user_id",
+        updatable = false
+    )
     private UserEntity user;
 
     @ManyToMany
+    @JoinTable(
+        joinColumns = @JoinColumn(name = "post_id", referencedColumnName = "post_id"),
+        inverseJoinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "tag_id"),
+        name = "posts_tags",
+        schema = "tp_twitter"
+    )
     Set<TagEntity> tags;
 
-    @OneToMany(mappedBy = "posts")
+    @OneToMany(mappedBy = "postId")
     private Set<CommentEntity> comments;
 
 }

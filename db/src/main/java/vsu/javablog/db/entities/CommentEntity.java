@@ -18,7 +18,7 @@ public class CommentEntity {
     @Column(name = "comment_id")
     private Long id;
 
-    @Column(name = "date_")
+    @Column(name = "comment_date")
     private Date date;
 
     @Column(name = "content")
@@ -27,9 +27,9 @@ public class CommentEntity {
 
     @ManyToOne()
     @JoinColumn(name = "post_id", referencedColumnName = "post_id", nullable=false)
-    PostEntity post;
+    PostEntity postId;
 
     @ManyToOne()
     @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable=false)
-    UserEntity user_id;
+    UserEntity userId;
 }
