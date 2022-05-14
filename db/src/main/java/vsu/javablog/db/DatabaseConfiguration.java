@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EntityScan(basePackages = {
     "vsu.javablog.db.entity"
 })
-@EnableJpaRepositories(basePackages = "vsu.javablog.db.repository")
+@EnableJpaRepositories(basePackages = "vsu.javablog.db.repositories")
 @EnableTransactionManagement
 public class DatabaseConfiguration {
 }
