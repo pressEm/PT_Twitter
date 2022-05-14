@@ -12,3 +12,33 @@
 - [Техническое задание](https://github.com/pressEm/PT_Twitter/files/8309808/T3_ver19032022.docx)
 - [Курсовая работа](https://github.com/pressEm/PT_Twitter/files/8305183/default.docx)
 - [Swagger](https://app.swaggerhub.com/apis/TP_Twitter/TP_Twitter/1.0.0#/pet/findPetsByStatus)
+
+**Ссылка на сваггер побилась/не сохранилась**, не понимаю, что произошло, но теперь там стандартный petstore, который предоставляет сваггер в виде тестового проекта, а не апи для этого проекта. В связи с чем привожу апи здесь (до тех пор, пока не разберусь и не поправлю сваггер)
+1.all posts GET
+/posts
+2. one post GET
+/posts/{id}
+3. posts for one tag GET
+/posts/tag/{tagid}
+4. user profile + latest user posts GET
+/users/{id}
+5. all user posts GET
+/users/{id}/posts
+6*. all tags GET
+/tags
+7. create post POST
+/posts
+8. create comment POST
+/posts/{id}/comment
+9. update post UPDATE
+/posts/{id}
+10. update comment UPDATE
+/posts/{id}/comment/{id}
+11. all users GET
+/users
+12. subcriptions
+/users/{logged_user_id}/subscriptions
+13. subscribers
+/users/{logged_user_id}/subscribers
+14. login
+/login
