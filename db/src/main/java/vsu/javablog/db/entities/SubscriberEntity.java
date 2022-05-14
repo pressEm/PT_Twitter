@@ -6,7 +6,6 @@ import org.springframework.validation.annotation.Validated;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Data
 @Entity
 @Table(name = "subscriptions", schema = "tp_twitter")
 //@Validated

@@ -8,7 +8,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
-@Data
 @Entity
 @Table(name = "comments", schema = "tp_twitter")
 public class CommentEntity {

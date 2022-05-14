@@ -6,7 +6,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.Set;
 
-@Data
 @Entity
 @Table(name = "posts", schema = "tp_twitter")
 public class PostEntity {

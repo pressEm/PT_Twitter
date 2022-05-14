@@ -11,7 +11,6 @@ import java.io.Serializable;
 import java.util.Objects;
 import java.util.Set;
 
-@Data
 @Entity
 @Table(name = "users", schema = "tp_twitter")
 @Validated

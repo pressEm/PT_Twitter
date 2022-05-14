@@ -10,7 +10,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
-@Data
 @Entity
 @Table(name = "roles", schema = "tp_twitter")
 //@Validated

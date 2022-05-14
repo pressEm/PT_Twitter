@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EntityScan(basePackages = {
-    "vsu.javablog.db.entity"
+    "vsu.javablog.db.entities"
 })
 @EnableJpaRepositories(basePackages = "vsu.javablog.db.repositories")
 @EnableTransactionManagement

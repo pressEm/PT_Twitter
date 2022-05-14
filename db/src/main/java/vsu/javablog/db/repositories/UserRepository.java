@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import vsu.javablog.db.entities.UserEntity;
 
 public interface UserRepository extends CrudRepository<UserEntity, Integer>, JpaRepository<UserEntity, Integer>, JpaSpecificationExecutor<UserEntity> {
-    UserEntity findByUsernameEquals(String login);
+    UserEntity findByUsername(String login);
     boolean existsByUsername(String login);
     boolean existsByEmail(String email);
 }
