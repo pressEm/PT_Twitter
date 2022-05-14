@@ -19,7 +19,6 @@ public class TagEntity {
     @Column(name = "tag_name")
     @NotEmpty(message = "Tag can not be empty")
     private String tag;
-
-    @ManyToMany
-    Set<PostEntity> posts;
+//    @ManyToMany
+//    Set<PostEntity> posts;
 }

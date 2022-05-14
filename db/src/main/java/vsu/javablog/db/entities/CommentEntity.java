@@ -18,7 +18,7 @@ public class CommentEntity {
     @Column(name = "comment_id")
     private Long id;
 
-    @Column(name = "date_")
+    @Column(name = "comment_date")
     private Date date;
 
     @Column(name = "content")
