@@ -3,6 +3,8 @@ package vsu.javablog.db.entities;
 
 import jdk.jfr.DataAmount;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -10,12 +12,14 @@ import java.util.Date;
 
 @Entity
 @Table(name = "comments", schema = "tp_twitter")
+@Getter
+@Setter
 public class CommentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "comment_id")
-    private Long id;
+    private Integer id;
 
     @Column(name = "comment_date")
     private Date date;
