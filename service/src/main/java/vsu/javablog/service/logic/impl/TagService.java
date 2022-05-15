@@ -10,6 +10,7 @@ import vsu.javablog.service.logic.ITagService;
 import vsu.javablog.service.mapper.TagMapper;
 import vsu.javablog.service.model.TagDto;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @Service
@@ -26,7 +27,7 @@ public class TagService implements ITagService {
     }
 
     @Override
-    public TagDto createTag(TagDto dto) {
+    public TagDto createTag(@Valid TagDto dto) {
         return Optional.of(dto)
             .map(map::toEntity)
             .map(rep::save)

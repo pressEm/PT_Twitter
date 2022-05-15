@@ -9,6 +9,7 @@ import vsu.javablog.service.logic.ICommentService;
 import vsu.javablog.service.mapper.CommentMapper;
 import vsu.javablog.service.model.CommentDto;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,7 +27,7 @@ public class CommentService implements ICommentService {
     }
 
     @Override
-    public CommentDto createComment(CommentDto dto) {
+    public CommentDto createComment(@Valid CommentDto dto) {
         return Optional.of(dto)
             .map(map::toEntity)
             .map(rep::save)
