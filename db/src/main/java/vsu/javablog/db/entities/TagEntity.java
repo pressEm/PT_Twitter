@@ -8,7 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.Set;
 
-@Entity
+@Entity(name = "tags")
 @Table(name = "tags", schema = "tp_twitter")
 @Getter
 @Setter

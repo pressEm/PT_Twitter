@@ -14,16 +14,19 @@ import java.util.List;
 import java.util.Set;
 
 @Repository
-public interface PostRepository  extends CrudRepository<PostEntity, Integer>, JpaRepository<PostEntity, Integer>, JpaSpecificationExecutor<PostEntity> {
+public interface PostRepository extends CrudRepository<PostEntity, Integer>, JpaRepository<PostEntity, Integer>, JpaSpecificationExecutor<PostEntity> {
     //List<PostEntity> findAllByTags(Set<TagEntity> tags);
-//    @Query(""+
-//        "SELECT p "+
-//        "FROM post_tags t "+
-//        "JOIN t.posts p "+
-//        "WHERE p.post_id = ?1"
-//    )
-//    List<PostEntity> findAllPostsByTagId(Integer tagId);
+    @Query("" +
+        "SELECT p " +
+        "FROM posts p " +
+        "JOIN p.tags t " +
+        "WHERE t.id = ?1"
+    )
+    List<PostEntity> findAllPostsByTagId(Integer tagId);
 
     PostEntity findByTitle(@NotEmpty(message = "Title can not be empty") String title);
+
     List<PostEntity> findByUser(UserEntity user);
+
+    List<PostEntity> findAllByUserId(Integer userId);
 }

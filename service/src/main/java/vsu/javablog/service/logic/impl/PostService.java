@@ -10,9 +10,10 @@ import vsu.javablog.service.mapper.PostMapper;
 import vsu.javablog.service.model.PostDto;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
-@Validated
+//@Validated
 //@RequiredArgsConstructor
 public class PostService implements IPostService {
     private final PostRepository rep;
@@ -26,26 +27,30 @@ public class PostService implements IPostService {
 
     @Override
     public PostDto createPost(PostDto dto) {
-        return null;
+        return Optional.of(dto)
+            .map(map::toEntity)
+            .map(rep::save)
+            .map(map::fromEntity)
+            .orElseThrow();
     }
 
     @Override
     public void deletePostById(Integer id) {
-
+        rep.deleteById(id);
     }
 
     @Override
     public List<PostDto> getAllPosts() {
-        return null;
+        return map.fromEntities(rep.findAll());
     }
 
     @Override
     public List<PostDto> getAllPostsByUserId(Integer id) {
-        return null;
+        return map.fromEntities(rep.findAllByUserId(id));
     }
 
     @Override
     public List<PostDto> getAllPostsByTagId(Integer id) {
-        return null;
+        return map.fromEntities(rep.findAllPostsByTagId(id));
     }
 }
