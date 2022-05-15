@@ -9,6 +9,7 @@ import vsu.javablog.service.logic.IPostService;
 import vsu.javablog.service.mapper.PostMapper;
 import vsu.javablog.service.model.PostDto;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,7 +27,7 @@ public class PostService implements IPostService {
     }
 
     @Override
-    public PostDto createPost(PostDto dto) {
+    public PostDto createPost(@Valid PostDto dto) {
         return Optional.of(dto)
             .map(map::toEntity)
             .map(rep::save)

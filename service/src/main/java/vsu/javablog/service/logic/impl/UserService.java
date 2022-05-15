@@ -10,6 +10,7 @@ import vsu.javablog.service.logic.IUserService;
 import vsu.javablog.service.mapper.UserMapper;
 import vsu.javablog.service.model.UserDto;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +28,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public UserDto createUser(UserDto dto) {
+    public UserDto createUser(@Valid UserDto dto) {
         return Optional.of(dto)
             .map(map::toEntity)
             .map(rep::save)
