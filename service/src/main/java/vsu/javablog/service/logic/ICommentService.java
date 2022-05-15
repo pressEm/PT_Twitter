@@ -10,7 +10,7 @@ public interface ICommentService {
 
     CommentDto getCommentById(Integer id);
 
-    List<CommentDto> getAllCommentsByUserId();
+    List<CommentDto> getAllCommentsByUserId(Integer id);
 
-    List<CommentDto> getAllCommentsByPostId();
+    List<CommentDto> getAllCommentsByPostId(Integer id);
 }

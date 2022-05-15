@@ -10,6 +10,7 @@ import vsu.javablog.service.mapper.CommentMapper;
 import vsu.javablog.service.model.CommentDto;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Validated
@@ -26,22 +27,27 @@ public class CommentService implements ICommentService {
 
     @Override
     public CommentDto createComment(CommentDto dto) {
-        //return map.fromEntity(rep.save(map.toEntity(dto)));
-        return null;
+        return Optional.of(dto)
+            .map(map::toEntity)
+            .map(rep::save)
+            .map(map::fromEntity)
+            .orElseThrow();
     }
 
     @Override
     public CommentDto getCommentById(Integer id) {
-        return null;
+        return rep.findById(id)
+            .map(map::fromEntity)
+            .orElseThrow();
     }
 
     @Override
-    public List<CommentDto> getAllCommentsByUserId() {
-        return null;
+    public List<CommentDto> getAllCommentsByUserId(Integer id) {
+        return map.fromEntities(rep.findAllByUserId(id));
     }
 
     @Override
-    public List<CommentDto> getAllCommentsByPostId() {
-        return null;
+    public List<CommentDto> getAllCommentsByPostId(Integer id) {
+        return map.fromEntities(rep.findAllByPostId(id));
     }
 }

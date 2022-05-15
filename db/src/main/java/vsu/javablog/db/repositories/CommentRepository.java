@@ -12,6 +12,6 @@ import java.util.List;
 
 @Repository
 public interface CommentRepository  extends CrudRepository<CommentEntity, Integer>, JpaRepository<CommentEntity, Integer>, JpaSpecificationExecutor<CommentEntity> {
-    List<CommentEntity> findAllByUserId(UserEntity userId);
-    List<CommentEntity> findAllByPostId(PostEntity postId);
+    List<CommentEntity> findAllByUserId(Integer userId);
+    List<CommentEntity> findAllByPostId(Integer postId);
 }
