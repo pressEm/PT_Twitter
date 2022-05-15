@@ -11,6 +11,7 @@ import vsu.javablog.service.mapper.TagMapper;
 import vsu.javablog.service.model.TagDto;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -46,5 +47,10 @@ public class TagService implements ITagService {
     @Override
     public TagDto findByName(String name) {
         return map.fromEntity(rep.findByTag(name));
+    }
+
+    @Override
+    public List<TagDto> getAllTags() {
+        return map.fromEntities(rep.findAll());
     }
 }

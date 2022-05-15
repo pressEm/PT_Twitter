@@ -4,6 +4,7 @@ import vsu.javablog.service.model.TagDto;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 public interface ITagService {
     TagDto createTag(@Valid TagDto dto);
@@ -11,4 +12,6 @@ public interface ITagService {
     TagDto findById(@NotNull Integer id);
 
     TagDto findByName(@NotNull String name);
+
+    List<TagDto> getAllTags();
 }
