@@ -50,6 +50,9 @@ public class UserEntity implements Serializable {
     @OneToMany(mappedBy="userId")
     private Set<CommentEntity> comments;
 
+    @OneToMany(mappedBy = "user")
+    private Set<PostEntity> posts;
+
 //    public UserEntity() {
 //    }
 //

@@ -6,9 +6,10 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 import java.util.Set;
 
-@Entity
+@Entity(name = "posts")
 @Table(name = "posts", schema = "tp_twitter")
 @Getter
 @Setter
@@ -42,7 +43,7 @@ public class PostEntity {
         name = "posts_tags",
         schema = "tp_twitter"
     )
-    Set<TagEntity> tags;
+    List<TagEntity> tags;
 
     @OneToMany(mappedBy = "postId")
     private Set<CommentEntity> comments;
