@@ -8,7 +8,6 @@ import vsu.javablog.service.model.CommentDto;
 
 @RestController
 @RequestMapping("/comments")
-@RequiredArgsConstructor
 public class CommentController {
     private final CommentService service;
 //todo: внести изменения в сваггер
