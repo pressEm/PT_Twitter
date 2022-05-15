@@ -4,10 +4,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
+import vsu.javablog.db.entities.TagEntity;
 import vsu.javablog.db.repositories.TagRepository;
 import vsu.javablog.service.logic.ITagService;
 import vsu.javablog.service.mapper.TagMapper;
 import vsu.javablog.service.model.TagDto;
+
+import java.util.Optional;
 
 @Service
 @Validated
@@ -24,16 +27,23 @@ public class TagService implements ITagService {
 
     @Override
     public TagDto createTag(TagDto dto) {
-        return null;
+        return Optional.of(dto)
+            .map(map::toEntity)
+            .map(rep::save)
+            .map(map::fromEntity)
+            .orElseThrow();
+//        TagEntity e = map.toEntity(dto);
+//        rep.save(e);
+//        return map.fromEntity(e);
     }
 
     @Override
     public TagDto findById(Integer id) {
-        return null;
+        return rep.findById(id).map(map::fromEntity).orElseThrow();
     }
 
     @Override
     public TagDto findByName(String name) {
-        return null;
+        return map.fromEntity(rep.findByTag(name));
     }
 }

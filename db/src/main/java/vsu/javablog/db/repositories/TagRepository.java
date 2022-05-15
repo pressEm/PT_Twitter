@@ -9,4 +9,5 @@ import vsu.javablog.db.entities.TagEntity;
 
 @Repository
 public interface TagRepository extends CrudRepository<TagEntity, Integer>, JpaRepository<TagEntity, Integer>, JpaSpecificationExecutor<TagEntity> {
+    TagEntity findByTag(String tag);
 }
