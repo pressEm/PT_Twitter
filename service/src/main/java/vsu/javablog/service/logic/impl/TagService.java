@@ -1,17 +1,26 @@
 package vsu.javablog.service.logic.impl;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 import vsu.javablog.db.repositories.TagRepository;
 import vsu.javablog.service.logic.ITagService;
 import vsu.javablog.service.mapper.TagMapper;
 import vsu.javablog.service.model.TagDto;
 
 @Service
-@RequiredArgsConstructor
+@Validated
+//@RequiredArgsConstructor
 public class TagService implements ITagService {
     private final TagRepository rep;
     private final TagMapper map;
+
+    @Autowired
+    public TagService(TagRepository rep, TagMapper map) {
+        this.rep = rep;
+        this.map = map;
+    }
 
     @Override
     public TagDto createTag(TagDto dto) {
