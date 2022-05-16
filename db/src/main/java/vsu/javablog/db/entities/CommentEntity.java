@@ -11,8 +11,8 @@ import java.util.Date;
 
 @Entity
 @Table(name = "comments", schema = "tp_twitter")
-@Getter
-@Setter
+//@Getter
+//@Setter
 public class CommentEntity {
 
     @Id
@@ -34,4 +34,44 @@ public class CommentEntity {
     @ManyToOne()
     @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable=false)
     UserEntity user;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Instant getDate() {
+        return date;
+    }
+
+    public void setDate(Instant date) {
+        this.date = date;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public PostEntity getPost() {
+        return post;
+    }
+
+    public void setPost(PostEntity post) {
+        this.post = post;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
 }

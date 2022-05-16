@@ -10,8 +10,8 @@ import java.util.Set;
 
 @Entity(name = "tags")
 @Table(name = "tags", schema = "tp_twitter")
-@Getter
-@Setter
+//@Getter
+//@Setter
 public class TagEntity {
 
     @Id
@@ -24,4 +24,20 @@ public class TagEntity {
     private String tag;
 //    @ManyToMany
 //    Set<PostEntity> posts;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
 }
