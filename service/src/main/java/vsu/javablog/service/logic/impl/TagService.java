@@ -6,6 +6,7 @@ import org.springframework.validation.annotation.Validated;
 import vsu.javablog.db.repositories.TagRepository;
 import vsu.javablog.service.logic.ITagService;
 import vsu.javablog.service.mapper.ITagMapper;
+import vsu.javablog.service.mapper.impl.TagMapper;
 import vsu.javablog.service.model.TagDto;
 
 import javax.validation.Valid;
@@ -20,9 +21,9 @@ public class TagService implements ITagService {
     private final ITagMapper map;
 
     @Autowired
-    public TagService(TagRepository rep, ITagMapper map) {
+    public TagService(TagRepository rep) {
         this.rep = rep;
-        this.map = map;
+        this.map = new TagMapper();
     }
 
     @Override

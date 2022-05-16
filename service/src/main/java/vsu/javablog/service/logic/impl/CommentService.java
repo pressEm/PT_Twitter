@@ -4,8 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import vsu.javablog.db.repositories.CommentRepository;
+import vsu.javablog.db.repositories.PostRepository;
+import vsu.javablog.db.repositories.UserRepository;
 import vsu.javablog.service.logic.ICommentService;
 import vsu.javablog.service.mapper.ICommentMapper;
+import vsu.javablog.service.mapper.impl.CommentMapper;
 import vsu.javablog.service.model.CommentDto;
 
 import javax.validation.Valid;
@@ -20,9 +23,9 @@ public class CommentService implements ICommentService {
     private final ICommentMapper map;
 
     @Autowired
-    public CommentService(CommentRepository rep, ICommentMapper map) {
+    public CommentService(CommentRepository rep, UserRepository uR, PostRepository pR) {
         this.rep = rep;
-        this.map = map;
+        this.map = new CommentMapper(uR, pR);
     }
 
     @Override

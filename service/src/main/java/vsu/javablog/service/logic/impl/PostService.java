@@ -3,8 +3,12 @@ package vsu.javablog.service.logic.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vsu.javablog.db.repositories.PostRepository;
+import vsu.javablog.db.repositories.UserRepository;
 import vsu.javablog.service.logic.IPostService;
 import vsu.javablog.service.mapper.IPostMapper;
+import vsu.javablog.service.mapper.impl.CommentMapper;
+import vsu.javablog.service.mapper.impl.PostMapper;
+import vsu.javablog.service.mapper.impl.TagMapper;
 import vsu.javablog.service.model.PostDto;
 
 import javax.validation.Valid;
@@ -19,9 +23,9 @@ public class PostService implements IPostService {
     private final IPostMapper map;
 
     @Autowired
-    public PostService(PostRepository rep, IPostMapper map) {
+    public PostService(PostRepository rep, UserRepository uR) {
         this.rep = rep;
-        this.map = map;
+        this.map = new PostMapper(new CommentMapper(uR, rep), new TagMapper(), uR);
     }
 
     @Override

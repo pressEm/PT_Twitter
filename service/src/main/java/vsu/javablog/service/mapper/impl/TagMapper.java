@@ -8,6 +8,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class TagMapper implements ITagMapper {
+    public TagMapper() {
+    }
+
     @Override
     public TagDto fromEntity(TagEntity entity) {
         if (entity == null)

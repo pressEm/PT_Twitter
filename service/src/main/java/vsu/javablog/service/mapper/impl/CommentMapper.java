@@ -1,6 +1,9 @@
 package vsu.javablog.service.mapper.impl;
 
+import org.mapstruct.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 import vsu.javablog.db.entities.CommentEntity;
 import vsu.javablog.db.entities.PostEntity;
 import vsu.javablog.db.entities.UserEntity;
@@ -9,9 +12,11 @@ import vsu.javablog.db.repositories.UserRepository;
 import vsu.javablog.service.mapper.ICommentMapper;
 import vsu.javablog.service.model.CommentDto;
 
+import javax.annotation.ManagedBean;
 import java.util.LinkedList;
 import java.util.List;
 
+@Component
 public class CommentMapper implements ICommentMapper {
     private final UserRepository uR;
     private final PostRepository pR;
@@ -63,7 +68,6 @@ public class CommentMapper implements ICommentMapper {
             entities) {
             l.add(fromEntity(e));
         }
-
         return l;
     }
 }
