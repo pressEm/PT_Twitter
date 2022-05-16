@@ -1,6 +1,5 @@
 package vsu.javablog.db.entities;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -45,7 +44,7 @@ public class PostEntity {
     )
     List<TagEntity> tags;
 
-    @OneToMany(mappedBy = "postId")
+    @OneToMany(mappedBy = "post")
     private Set<CommentEntity> comments;
 
 }

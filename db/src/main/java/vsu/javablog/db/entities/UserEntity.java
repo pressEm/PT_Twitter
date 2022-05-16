@@ -1,8 +1,5 @@
 package vsu.javablog.db.entities;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
@@ -11,8 +8,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "users", schema = "tp_twitter")
@@ -48,7 +43,7 @@ public class UserEntity implements Serializable {
     @NotEmpty(message = "Roles can not be null")
     private RoleEntity role;
 
-    @OneToMany(mappedBy="userId")
+    @OneToMany(mappedBy= "user")
     private List<CommentEntity> comments;
 
     @OneToMany(mappedBy = "user")

@@ -1,13 +1,12 @@
 package vsu.javablog.db.entities;
 
 
-import jdk.jfr.DataAmount;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.time.Instant;
 import java.util.Date;
 
 @Entity
@@ -22,7 +21,7 @@ public class CommentEntity {
     private Integer id;
 
     @Column(name = "comment_date")
-    private Date date;
+    private Instant date;
 
     @Column(name = "content")
     @NotEmpty(message = "Comment content can not be empty")
@@ -30,9 +29,9 @@ public class CommentEntity {
 
     @ManyToOne()
     @JoinColumn(name = "post_id", referencedColumnName = "post_id", nullable=false)
-    PostEntity postId;
+    PostEntity post;
 
     @ManyToOne()
     @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable=false)
-    UserEntity userId;
+    UserEntity user;
 }
