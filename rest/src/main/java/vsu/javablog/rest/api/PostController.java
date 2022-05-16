@@ -30,11 +30,13 @@ public class PostController {
     @GetMapping("/{postId}")
     public PostDto getPostById(@PathVariable Integer postId){
         //todo:creategetpostbyid
+        return null;
     }
 
     @PutMapping("/{postId}")
     public PostDto updatePostById(Integer postId){
         //Todo: createupdateinpostservice
+        return null;
     }
 
     @DeleteMapping("/{postId}")

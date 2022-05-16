@@ -30,16 +30,19 @@ public class UserController {
     @GetMapping("/{userId}/subscriptions")
     public List<UserDto> getSubscriptions(@PathVariable Integer userId){
         //Todo: make this method in service
+        return null;
     }
 
     @DeleteMapping("/{userId}/subscriptions/{subionId}")
     public void deleteSubscription(@PathVariable Integer userId,
                                    @PathVariable Integer subionId){
         //Todo: make this method in service
+
     }
 
     @GetMapping("/{userId}/subscribers")
     public List<UserDto> getUserSubscribers(@PathVariable Integer userId){
         //Todo: make this also
+        return null;
     }
 }

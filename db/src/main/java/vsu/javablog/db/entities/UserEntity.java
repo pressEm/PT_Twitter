@@ -10,14 +10,15 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
 @Entity
 @Table(name = "users", schema = "tp_twitter")
 @Validated
-@Getter
-@Setter
+//@Getter
+//@Setter
 public class UserEntity implements Serializable {
 
     @Id
@@ -48,22 +49,70 @@ public class UserEntity implements Serializable {
     private RoleEntity role;
 
     @OneToMany(mappedBy="userId")
-    private Set<CommentEntity> comments;
+    private List<CommentEntity> comments;
 
     @OneToMany(mappedBy = "user")
-    private Set<PostEntity> posts;
+    private List<PostEntity> posts;
 
 //    public UserEntity() {
 //    }
 //
-//    public Integer getId() {
-//        return id;
-//    }
-//
-//    public String getUsername() {
-//        return username;
-//    }
-//
+    public Integer getId() {
+        return id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public RoleEntity getRole() {
+        return role;
+    }
+
+    public void setRole(RoleEntity role) {
+        this.role = role;
+    }
+
+    public List<CommentEntity> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<CommentEntity> comments) {
+        this.comments = comments;
+    }
+
+    public List<PostEntity> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<PostEntity> posts) {
+        this.posts = posts;
+    }
+    //
 //    public String getPassword() {
 //        return password;
 //    }

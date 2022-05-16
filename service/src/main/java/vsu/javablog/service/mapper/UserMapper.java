@@ -8,7 +8,7 @@ import vsu.javablog.service.model.UserDto;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+//@Mapper(componentModel = "spring")
 public interface UserMapper {
     //@Mapping(target = "role", ignore = true)
     //@Mapping(target = "comments", ignore = true)
