@@ -1,6 +1,7 @@
 package vsu.javablog.service.mapper.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import vsu.javablog.db.entities.CommentEntity;
 import vsu.javablog.db.entities.PostEntity;
 import vsu.javablog.db.entities.TagEntity;
@@ -16,6 +17,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+@Component
 public class PostMapper implements IPostMapper {
     private final CommentMapper cM;
     private final TagMapper tM;

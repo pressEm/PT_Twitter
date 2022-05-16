@@ -1,6 +1,7 @@
 package vsu.javablog.service.mapper.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import vsu.javablog.db.entities.CommentEntity;
 import vsu.javablog.db.entities.PostEntity;
 import vsu.javablog.db.entities.UserEntity;
@@ -12,6 +13,7 @@ import vsu.javablog.service.model.UserDto;
 import java.util.LinkedList;
 import java.util.List;
 
+@Component
 public class UserMapper implements IUserMapper {
     private final PostMapper pM;
     private final CommentMapper cM;

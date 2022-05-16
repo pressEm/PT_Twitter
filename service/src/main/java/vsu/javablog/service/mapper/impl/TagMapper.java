@@ -1,5 +1,6 @@
 package vsu.javablog.service.mapper.impl;
 
+import org.springframework.stereotype.Component;
 import vsu.javablog.db.entities.TagEntity;
 import vsu.javablog.service.mapper.ITagMapper;
 import vsu.javablog.service.model.TagDto;
@@ -7,6 +8,7 @@ import vsu.javablog.service.model.TagDto;
 import java.util.LinkedList;
 import java.util.List;
 
+@Component
 public class TagMapper implements ITagMapper {
     public TagMapper() {
     }
