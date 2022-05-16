@@ -7,8 +7,7 @@ import vsu.javablog.service.model.TagDto;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
-public interface TagMapper {
+public interface ITagMapper {
     TagDto fromEntity(TagEntity entity);
 
     TagEntity toEntity(TagDto dto);

@@ -8,17 +8,9 @@ import vsu.javablog.service.model.UserDto;
 
 import java.util.List;
 
-//@Mapper(componentModel = "spring")
-public interface UserMapper {
-    //@Mapping(target = "role", ignore = true)
-    //@Mapping(target = "comments", ignore = true)
-//    @Mapping(target = "posts", ignore = true)
+public interface IUserMapper {
     UserDto fromEntity(UserEntity entity);
 
-//    @Mapping(target = "password", ignore = true)
-//    @Mapping(target = "role", ignore = true)
-//    @Mapping(target = "comments", ignore = true)
-//    @Mapping(target = "posts", ignore = true)
     UserEntity toEntity(UserDto dto);
 
     void merge(UserDto dto, @MappingTarget UserEntity entity);

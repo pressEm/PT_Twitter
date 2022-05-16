@@ -1,12 +1,11 @@
 package vsu.javablog.service.logic.impl;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import vsu.javablog.db.repositories.CommentRepository;
 import vsu.javablog.service.logic.ICommentService;
-import vsu.javablog.service.mapper.CommentMapper;
+import vsu.javablog.service.mapper.ICommentMapper;
 import vsu.javablog.service.model.CommentDto;
 
 import javax.validation.Valid;
@@ -18,10 +17,10 @@ import java.util.Optional;
 //@RequiredArgsConstructor
 public class CommentService implements ICommentService {
     private final CommentRepository rep;
-    private final CommentMapper map;
+    private final ICommentMapper map;
 
     @Autowired
-    public CommentService(CommentRepository rep, CommentMapper map) {
+    public CommentService(CommentRepository rep, ICommentMapper map) {
         this.rep = rep;
         this.map = map;
     }

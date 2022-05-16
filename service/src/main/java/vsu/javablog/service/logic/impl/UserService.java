@@ -1,23 +1,16 @@
 package vsu.javablog.service.logic.impl;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
-import vsu.javablog.db.entities.CommentEntity;
-import vsu.javablog.db.entities.PostEntity;
 import vsu.javablog.db.entities.UserEntity;
 import vsu.javablog.db.repositories.UserRepository;
 import vsu.javablog.service.logic.IUserService;
-import vsu.javablog.service.mapper.PostMapper;
-import vsu.javablog.service.mapper.UserMapper;
-import vsu.javablog.service.model.PostDto;
 import vsu.javablog.service.model.UserDto;
 
 import javax.validation.Valid;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Validated

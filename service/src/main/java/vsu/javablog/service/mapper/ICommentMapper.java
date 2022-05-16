@@ -9,14 +9,9 @@ import vsu.javablog.service.model.PostDto;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
-public interface CommentMapper {
-//    @Mapping(target = "postId", ignore = true)
-//    @Mapping(target = "userId", ignore = true)
+public interface ICommentMapper {
     CommentDto fromEntity(CommentEntity entity);
 
-//    @Mapping(target = "post_id", ignore = true)
-//    @Mapping(target = "userId", ignore = true)
     CommentEntity toEntity(CommentDto dto);
 
     List<CommentDto> fromEntities(Iterable<CommentEntity> entities);
