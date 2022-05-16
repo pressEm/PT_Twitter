@@ -9,6 +9,7 @@ import java.util.List;
 public class PostMapper implements IPostMapper {
     @Override
     public PostDto fromEntity(PostEntity entity) {
+        PostDto dto = new PostDto();
         return null;
     }
 

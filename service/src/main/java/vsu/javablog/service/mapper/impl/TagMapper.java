@@ -10,6 +10,8 @@ import java.util.List;
 public class TagMapper implements ITagMapper {
     @Override
     public TagDto fromEntity(TagEntity entity) {
+        if (entity == null)
+            return null;
         TagDto dto = new TagDto();
         dto.setTag(entity.getTag());
         return dto;
@@ -17,6 +19,8 @@ public class TagMapper implements ITagMapper {
 
     @Override
     public TagEntity toEntity(TagDto dto) {
+        if (dto == null)
+            return null;
         TagEntity e = new TagEntity();
         e.setTag(dto.getTag());
         return e;
@@ -24,10 +28,16 @@ public class TagMapper implements ITagMapper {
 
     @Override
     public List<TagDto> fromEntities(Iterable<TagEntity> entities) {
+        if (entities == null)
+            return null;
+
         List<TagDto> l = new LinkedList<>();
         for (TagEntity e :
             entities) {
-            l.add(fromEntity(e));
+            if (e == null)
+                l.add(null);
+            else
+                l.add(fromEntity(e));
         }
         return l;
     }
