@@ -11,6 +11,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "roles", schema = "tp_twitter")
@@ -28,6 +29,12 @@ public class RoleEntity implements Serializable {
     @NotBlank
     @NotEmpty
     private String roleName;
+
+//    @OneToMany()
+//    @Transient
+////    @JoinColumn(name = "role")
+////    @NotEmpty(message = "Roles can not be null")
+//    private List<UserEntity> users;
 
     public Integer getRoleId() {
         return roleId;
