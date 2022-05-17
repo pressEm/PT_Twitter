@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="subscriptions", schema = "tp_twitter")
-public class SubscrEntity {
+public class SubscriptionEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,11 +30,7 @@ public class SubscrEntity {
         this.accepted = accepted;
     }
 
-    public SubscrEntity() {
-    }
-    public SubscrEntity(UserEntity subscriber, UserEntity subscription){
-        this.user = subscriber;
-        this.friend = subscription;
+    public SubscriptionEntity() {
     }
 
     public Integer getId() {

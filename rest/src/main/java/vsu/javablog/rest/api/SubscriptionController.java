@@ -1,6 +1,5 @@
 package vsu.javablog.rest.api;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,8 +9,6 @@ import vsu.javablog.service.logic.impl.SubscriptionService;
 import vsu.javablog.service.logic.impl.UserService;
 import vsu.javablog.service.model.UserDto;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -43,7 +40,6 @@ public class SubscriptionController {
     @GetMapping("/list/{userId}")
     public ResponseEntity<List<UserDto>> getFriends(@PathVariable Integer userId) {
         List<UserDto> myFriends = subscriptionService.getFriends(userId);
-
         return new ResponseEntity<>(myFriends, HttpStatus.OK);
     }
 }

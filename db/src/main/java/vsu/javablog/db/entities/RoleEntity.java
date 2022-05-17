@@ -15,9 +15,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "roles", schema = "tp_twitter")
-//@Validated
-//@Getter
-//@Setter
 public class RoleEntity implements Serializable {
 
     @Id
@@ -29,12 +26,6 @@ public class RoleEntity implements Serializable {
     @NotBlank
     @NotEmpty
     private String roleName;
-
-//    @OneToMany()
-//    @Transient
-////    @JoinColumn(name = "role")
-////    @NotEmpty(message = "Roles can not be null")
-//    private List<UserEntity> users;
 
     public Integer getRoleId() {
         return roleId;

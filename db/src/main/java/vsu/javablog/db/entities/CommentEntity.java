@@ -11,8 +11,6 @@ import java.util.Date;
 
 @Entity
 @Table(name = "comments", schema = "tp_twitter")
-//@Getter
-//@Setter
 public class CommentEntity {
 
     @Id

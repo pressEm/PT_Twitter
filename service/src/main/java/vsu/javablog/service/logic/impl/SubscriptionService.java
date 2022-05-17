@@ -2,7 +2,7 @@ package vsu.javablog.service.logic.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import vsu.javablog.db.entities.SubscrEntity;
+import vsu.javablog.db.entities.SubscriptionEntity;
 import vsu.javablog.db.entities.UserEntity;
 import vsu.javablog.db.repositories.SubscriptionRepository;
 import vsu.javablog.db.repositories.PostRepository;
@@ -40,7 +40,7 @@ public class SubscriptionService {
     public void addFriend(Integer userId, Integer friendId) {
         UserEntity user = userRepository.findById(userId).orElseThrow(() -> new NoSuchElementException("User by id " + userId.toString()));
         UserEntity friend = userRepository.findById(friendId).orElseThrow(() -> new NoSuchElementException("Friend by id " + friendId.toString()));
-        SubscrEntity friendRec = new SubscrEntity();
+        SubscriptionEntity friendRec = new SubscriptionEntity();
         if (subscriptionRepository.existsByUserAndFriend(user, friend)) {
             throw new NoSuchElementException("User friend: [" + user.getUsername().toString() + ", " + friend.getUsername().toString() + "]");
         } else {
@@ -59,7 +59,7 @@ public class SubscriptionService {
     public void deleteFriend(Integer userId, Integer friendId) throws NullPointerException {
         UserEntity user = userRepository.findById(userId).orElseThrow(() -> new NoSuchElementException("User by id " + userId.toString()));
         UserEntity friend = userRepository.findById(friendId).orElseThrow(() -> new NoSuchElementException("Friend by id " + friendId.toString()));
-        SubscrEntity fr1 = subscriptionRepository.findByUserAndFriend(user, friend);
+        SubscriptionEntity fr1 = subscriptionRepository.findByUserAndFriend(user, friend);
         if (subscriptionRepository.existsByUserAndFriend(friend, user)) {
             updateStatus(friend, user, false);
         }
@@ -70,21 +70,21 @@ public class SubscriptionService {
     public List<UserDto> getFriends(Integer userId) {
 
         UserEntity user = userRepository.findById(userId).orElseThrow(() -> new NoSuchElementException("User by id " + userId.toString()));
-        List<SubscrEntity> friendsByFirstUser = subscriptionRepository.findByUserAndAccepted(user, true);
+        List<SubscriptionEntity> friendsByFirstUser = subscriptionRepository.findByUserAndAccepted(user, true);
         List<UserDto> friendUsers = new ArrayList<>();
-        for (SubscrEntity friend : friendsByFirstUser) {
+        for (SubscriptionEntity friend : friendsByFirstUser) {
             friendUsers.add(map.fromEntity(userRepository.getById(friend.getFriend().getId())));
         }
         return friendUsers;
     }
 
-    public List<SubscrEntity> getAllFriends() {
-        List<SubscrEntity> friendUsers = subscriptionRepository.findAll();
+    public List<SubscriptionEntity> getAllFriends() {
+        List<SubscriptionEntity> friendUsers = subscriptionRepository.findAll();
         return friendUsers;
     }
 
     public void updateStatus(UserEntity user, UserEntity friend, boolean status){
-        SubscrEntity friends = subscriptionRepository.findByUserAndFriend(user, friend);
+        SubscriptionEntity friends = subscriptionRepository.findByUserAndFriend(user, friend);
         if (friends != null){
             subscriptionRepository.updateStatus(friends.getId(), status);
         }

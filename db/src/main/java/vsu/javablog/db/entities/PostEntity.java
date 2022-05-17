@@ -10,8 +10,6 @@ import java.util.Set;
 
 @Entity(name = "posts")
 @Table(name = "posts", schema = "tp_twitter")
-//@Getter
-//@Setter
 public class PostEntity {
 
     @Id

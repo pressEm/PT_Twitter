@@ -12,8 +12,6 @@ import java.util.List;
 @Entity
 @Table(name = "users", schema = "tp_twitter")
 @Validated
-//@Getter
-//@Setter
 public class UserEntity implements Serializable {
 
     @Id
@@ -35,12 +33,9 @@ public class UserEntity implements Serializable {
     @NotEmpty(message = "Password can not be empty")
     private String password;
 
-//    @Column(name = "profile_picture")
-//    private String profilePicture;
-
     @ManyToOne()
     @JoinColumn(name = "role")
-//    @NotEmpty(message = "Roles can not be null")
+    @NotEmpty(message = "Roles can not be null")
     private RoleEntity role;
 
     @OneToMany(mappedBy= "user")
@@ -49,9 +44,6 @@ public class UserEntity implements Serializable {
     @OneToMany(mappedBy = "user")
     private List<PostEntity> posts;
 
-//    public UserEntity() {
-//    }
-//
     public Integer getId() {
         return id;
     }
