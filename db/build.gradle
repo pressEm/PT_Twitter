@@ -11,4 +11,15 @@ dependencies {
 
     compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.22'
 
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.6.3'
+    // https://mvnrepository.com/artifact/org.springframework/spring-web
+    implementation group: 'org.springframework', name: 'spring-web', version: '5.3.20'
+// https://mvnrepository.com/artifact/org.springframework.security/spring-security-core
+    implementation group: 'org.springframework.security', name: 'spring-security-core', version: '5.7.0'
+// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.6.7'
+// https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs
+    implementation group: 'org.springframework.security', name: 'spring-security-taglibs', version: '5.7.0'
+
+
 }

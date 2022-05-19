@@ -1,6 +1,9 @@
 package vsu.javablog.service.logic.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import vsu.javablog.db.entities.RoleEntity;
@@ -41,9 +44,8 @@ public class UserService implements IUserService {
     @Override
     public UserDto createUser(UserDto dto) {
         UserEntity entity = map.toEntity(dto);
-        RoleEntity role = roleRepository.findById(1);
+        RoleEntity role = roleRepository.findById(2);
         entity.setRole(role);
-//        entity.setId(2);
         rep.save(entity);
         return dto;
 //        entity.setId(2);
@@ -95,4 +97,18 @@ public class UserService implements IUserService {
         return map.fromEntities(rep.findAll());
 //        return dtos;
     }
+
+//    @Override
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        return null;
+//    }
+//    @Override
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        UserEntity user = rep.findByUsername(username);
+//
+//        if (user == null) {
+//            throw new UsernameNotFoundException("User not found");
+//        }
+//        return user;
+//    }
 }

@@ -1,5 +1,9 @@
 package vsu.javablog.db.entities;
 
+//import org.hibernate.mapping.Set;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
@@ -7,7 +11,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Table(name = "users", schema = "tp_twitter")
@@ -33,12 +37,17 @@ public class UserEntity implements Serializable {
     @NotEmpty(message = "Password can not be empty")
     private String password;
 
-    @ManyToOne()
+
+        @ManyToOne()
     @JoinColumn(name = "role")
     @NotEmpty(message = "Roles can not be null")
     private RoleEntity role;
+//    @ManyToMany()
+//    @JoinColumn(name = "role")
+//    @NotEmpty(message = "Roles can not be null")
+//    private Set<RoleEntity> roles;
 
-    @OneToMany(mappedBy= "user")
+    @OneToMany(mappedBy = "user")
     private List<CommentEntity> comments;
 
     @OneToMany(mappedBy = "user")
@@ -51,6 +60,26 @@ public class UserEntity implements Serializable {
     public String getUsername() {
         return username;
     }
+
+//    @Override
+//    public boolean isAccountNonExpired() {
+//        return false;
+//    }
+//
+//    @Override
+//    public boolean isAccountNonLocked() {
+//        return false;
+//    }
+//
+//    @Override
+//    public boolean isCredentialsNonExpired() {
+//        return false;
+//    }
+
+//    @Override
+//    public boolean isEnabled() {
+//        return false;
+//    }
 
     public void setId(Integer id) {
         this.id = id;
@@ -67,6 +96,25 @@ public class UserEntity implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+
+//    private Set<RoleEntity> roles;
+
+//    public Set getRoles() {
+//        return roles;
+//    }
+//
+//    public void setRoles(Set<RoleEntity> roles) {
+//        this.roles = roles;
+//    }
+//
+//    public void setRole(RoleEntity role) {
+//        this.roles.add(role);
+//    }
+
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        return getRoles();
+//    }
 
     public String getPassword() {
         return password;
