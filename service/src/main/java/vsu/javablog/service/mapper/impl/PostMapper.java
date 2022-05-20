@@ -40,22 +40,23 @@ public class PostMapper implements IPostMapper {
         dto.setContent(entity.getContent());
         dto.setUserId(entity.getUser().getId());
 
-        List<CommentDto> comments = new LinkedList<>();
-        List<TagDto> tags = new LinkedList<>();
-
-        for (CommentEntity e :
-            entity.getComments()) {
-            comments.add(cM.fromEntity(e));
+        if (entity.getTags()!=null){
+            List<TagDto> tags = new LinkedList<>();
+            for (TagEntity e :
+                entity.getTags()) {
+                tags.add(tM.fromEntity(e));
+            }
+            dto.setTags(tags);
         }
 
-        for (TagEntity e :
-            entity.getTags()) {
-            tags.add(tM.fromEntity(e));
+        if (entity.getComments()!=null){
+            List<CommentDto> comments = new LinkedList<>();
+            for (CommentEntity e :
+                entity.getComments()) {
+                comments.add(cM.fromEntity(e));
+            }
+            dto.setComments(comments);
         }
-
-        dto.setComments(comments);
-        dto.setTags(tags);
-
         return dto;
     }
 
@@ -72,21 +73,22 @@ public class PostMapper implements IPostMapper {
         UserEntity user = rep.getById(dto.getUserId());
         e.setUser(user);
 
-        Set<CommentEntity> comments = new HashSet<>();
-        List<TagEntity> tags = new LinkedList<>();
-
-        for (CommentDto c :
-            dto.getComments()) {
-            comments.add(cM.toEntity(c));
+        if (dto.getTags() != null) {
+            List<TagEntity> tags = new LinkedList<>();
+            for (TagDto t :
+                dto.getTags()) {
+                tags.add(tM.toEntity(t));
+            }
+            e.setTags(tags);
         }
-        for (TagDto t:
-        dto.getTags()){
-            tags.add(tM.toEntity(t));
+        if (dto.getComments() != null) {
+            Set<CommentEntity> comments = new HashSet<>();
+            for (CommentDto c :
+                dto.getComments()) {
+                comments.add(cM.toEntity(c));
+            }
+            e.setComments(comments);
         }
-
-        e.setComments(comments);
-        e.setTags(tags);
-
         return e;
     }
 

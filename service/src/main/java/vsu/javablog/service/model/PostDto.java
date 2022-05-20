@@ -11,6 +11,9 @@ import java.util.List;
 //@Getter
 //@Setter
 public class PostDto {
+    @JsonProperty("post_id")
+    private Integer postId;
+
     @JsonProperty("title")
     @NotBlank(message = "title.is-blank")
     @Size(min = 1, max = 50, message = "title.out-of-range")

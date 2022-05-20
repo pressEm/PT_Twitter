@@ -15,11 +15,9 @@ public class CommentDto {
     private Integer userId;
 
     @JsonProperty("post_id")
-    @NotBlank()
     private Integer postId;
 
     @JsonProperty("date")
-    @NotBlank(message = "date.is-blank")
     private Instant date;
 
     @JsonProperty("content")

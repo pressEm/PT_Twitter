@@ -3,6 +3,7 @@ package vsu.javablog.service.logic.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
+import vsu.javablog.db.entities.CommentEntity;
 import vsu.javablog.db.repositories.CommentRepository;
 import vsu.javablog.db.repositories.PostRepository;
 import vsu.javablog.db.repositories.UserRepository;
@@ -30,11 +31,14 @@ public class CommentService implements ICommentService {
 
     @Override
     public CommentDto createComment(@Valid CommentDto dto) {
-        return Optional.of(dto)
-            .map(map::toEntity)
-            .map(rep::save)
-            .map(map::fromEntity)
-            .orElseThrow();
+        CommentEntity e = map.toEntity(dto);
+        rep.save(e);
+        return map.fromEntity(e);
+//        return Optional.of(dto)
+//            .map(map::toEntity)
+//            .map(rep::save)
+//            .map(map::fromEntity)
+//            .orElseThrow();
     }
 
     @Override
