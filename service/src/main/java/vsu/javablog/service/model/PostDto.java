@@ -27,8 +27,18 @@ public class PostDto {
     @JsonProperty("user_id")
     private Integer userId;
 
+    @JsonProperty("tags")
     private List<TagDto> tags;
+    @JsonProperty("comments")
     private List<CommentDto> comments;
+
+    public Integer getPostId() {
+        return postId;
+    }
+
+    public void setPostId(Integer postId) {
+        this.postId = postId;
+    }
 
     public String getTitle() {
         return title;

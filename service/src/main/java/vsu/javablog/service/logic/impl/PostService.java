@@ -2,6 +2,7 @@ package vsu.javablog.service.logic.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import vsu.javablog.db.entities.PostEntity;
 import vsu.javablog.db.repositories.PostRepository;
 import vsu.javablog.db.repositories.UserRepository;
 import vsu.javablog.service.logic.IPostService;
@@ -12,6 +13,7 @@ import vsu.javablog.service.mapper.impl.TagMapper;
 import vsu.javablog.service.model.PostDto;
 
 import javax.validation.Valid;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,7 +46,15 @@ public class PostService implements IPostService {
 
     @Override
     public List<PostDto> getAllPosts() {
-        return map.fromEntities(rep.findAll());
+        List<PostDto> l = new LinkedList<>();
+        for (PostEntity e :
+            rep.findAll()) {
+            PostDto dto = map.fromEntity(e);
+            dto.setPostId(e.getId());
+            l.add(dto);
+        }
+//        return map.fromEntities(rep.findAll());
+        return l;
     }
 
     @Override
