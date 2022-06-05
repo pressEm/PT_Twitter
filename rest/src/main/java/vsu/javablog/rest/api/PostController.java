@@ -29,7 +29,7 @@ public class PostController {
 
     @GetMapping("/{postId}")
     public PostDto getPostById(@PathVariable Integer postId){
-
+        return service.getPost(postId);
     }
 
     @PutMapping("/{postId}")

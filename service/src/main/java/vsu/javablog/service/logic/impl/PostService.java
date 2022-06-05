@@ -66,4 +66,12 @@ public class PostService implements IPostService {
     public List<PostDto> getAllPostsByTagId(Integer id) {
         return map.fromEntities(rep.findAllPostsByTagId(id));
     }
+
+    @Override
+    public PostDto getPost(Integer postId) {
+        PostEntity e = rep.getById(postId);
+        PostDto dto = map.fromEntity(e);
+        dto.setPostId(e.getId());
+        return dto;
+    }
 }
