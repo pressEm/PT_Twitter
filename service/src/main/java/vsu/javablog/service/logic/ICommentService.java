@@ -13,4 +13,6 @@ public interface ICommentService {
     List<CommentDto> getAllCommentsByUserId(Integer id);
 
     List<CommentDto> getAllCommentsByPostId(Integer id);
+
+    void deleteCommentById(Integer id);
 }

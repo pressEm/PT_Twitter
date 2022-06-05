@@ -10,7 +10,7 @@ import vsu.javablog.service.model.CommentDto;
 @RequestMapping("/comments")
 public class CommentController {
     private final CommentService service;
-//todo: внести изменения в сваггер
+
     @Autowired
     public CommentController(CommentService service) {
         this.service = service;
@@ -24,5 +24,9 @@ public class CommentController {
     @GetMapping("/{commId}")
     public CommentDto getCommById(@PathVariable Integer commId){
         return service.getCommentById(commId);
+    }
+    @DeleteMapping("/{commId}")
+    public void deleteCommentById(@PathVariable Integer commId){
+        service.deleteCommentById(commId);
     }
 }

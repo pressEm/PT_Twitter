@@ -57,4 +57,11 @@ public class CommentService implements ICommentService {
     public List<CommentDto> getAllCommentsByPostId(Integer id) {
         return map.fromEntities(rep.findAllByPostId(id));
     }
+
+    @Override
+    public void deleteCommentById(Integer id) {
+        rep.delete(rep.getById(id));
+    }
+
+
 }
