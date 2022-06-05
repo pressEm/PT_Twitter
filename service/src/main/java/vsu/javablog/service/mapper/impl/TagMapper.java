@@ -19,6 +19,7 @@ public class TagMapper implements ITagMapper {
             return null;
         TagDto dto = new TagDto();
         dto.setTag(entity.getTag());
+        dto.setId(entity.getId());
         return dto;
     }
 
