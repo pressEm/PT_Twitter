@@ -29,8 +29,7 @@ public class PostController {
 
     @GetMapping("/{postId}")
     public PostDto getPostById(@PathVariable Integer postId){
-        //todo:creategetpostbyid
-        return null;
+
     }
 
     @PutMapping("/{postId}")
