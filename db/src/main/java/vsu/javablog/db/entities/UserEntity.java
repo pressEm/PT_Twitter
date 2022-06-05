@@ -1,8 +1,5 @@
 package vsu.javablog.db.entities;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
@@ -10,14 +7,13 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.Objects;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "users", schema = "tp_twitter")
 @Validated
-@Getter
-@Setter
+//@Getter
+//@Setter
 public class UserEntity implements Serializable {
 
     @Id
@@ -47,80 +43,68 @@ public class UserEntity implements Serializable {
     @NotEmpty(message = "Roles can not be null")
     private RoleEntity role;
 
-    @OneToMany(mappedBy="userId")
-    private Set<CommentEntity> comments;
+    @OneToMany(mappedBy= "user")
+    private List<CommentEntity> comments;
 
     @OneToMany(mappedBy = "user")
-    private Set<PostEntity> posts;
+    private List<PostEntity> posts;
 
 //    public UserEntity() {
 //    }
 //
-//    public Integer getId() {
-//        return id;
-//    }
-//
-//    public String getUsername() {
-//        return username;
-//    }
-//
-//    public String getPassword() {
-//        return password;
-//    }
-//
-////    public String getProfilePicture() {
-////        return profilePicture;
-////    }
-//
-//    public RoleEntity getRoles() {
-//        return role;
-//    }
-//
-//    public String getEmail() {
-//        return email;
-//    }
-//
-//    public void setUsername(String username) {
-//        this.username = username;
-//    }
-//
-//    public void setPassword(String password) {
-//        this.password = password;
-//    }
-//
-////    public void setProfilePicture(String profilePicture) {
-////        this.profilePicture = profilePicture;
-////    }
-//
-//    public void setRoles(RoleEntity role) {
-//        this.role = role;
-//    }
-//
-//    public void setEmail(String email) {
-//        this.email = email;
-//    }
-////
-////    @Override
-////    public boolean equals(Object o) {
-////        if (this == o) return true;
-////        if (!(o instanceof UserEntity)) return false;
-////        UserEntity that = (UserEntity) o;
-////        return Objects.equals(getId(), that.getId()) && Objects.equals(getUsername(), that.getUsername()) && Objects.equals(getPassword(), that.getPassword()) && Objects.equals(getProfilePicture(), that.getProfilePicture()) && Objects.equals(getRoles(), that.getRoles()) && Objects.equals(getEmail(), that.getEmail());
-////    }
-//
-////    @Override
-////    public int hashCode() {
-////        return Objects.hash(getId(),  getUsername(), getPassword(), getProfilePicture(), getRoles(), getEmail());
-////    }
-//
-////    @Override
-////    public String toString() {
-////        return "UserEntity{" +
-////                "id=" + id +
-////                ", username='" + username + '\'' +
-////                ", profilePicture='" + profilePicture + '\'' +
-////                ", roles=" + roles +
-////                ", email='" + email + '\'' +
-////                '}';
-////    }
+    public Integer getId() {
+        return id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public RoleEntity getRole() {
+        return role;
+    }
+
+    public void setRole(RoleEntity role) {
+        this.role = role;
+    }
+
+    public List<CommentEntity> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<CommentEntity> comments) {
+        this.comments = comments;
+    }
+
+    public List<PostEntity> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<PostEntity> posts) {
+        this.posts = posts;
+    }
 }

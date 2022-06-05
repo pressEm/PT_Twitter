@@ -15,4 +15,6 @@ public interface IPostService {
     List<PostDto> getAllPostsByUserId(Integer id);
 
     List<PostDto> getAllPostsByTagId(Integer id);
+
+    PostDto getPost(Integer postId);
 }

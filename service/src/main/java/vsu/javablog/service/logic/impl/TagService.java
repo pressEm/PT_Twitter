@@ -1,16 +1,16 @@
 package vsu.javablog.service.logic.impl;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
-import vsu.javablog.db.entities.TagEntity;
 import vsu.javablog.db.repositories.TagRepository;
 import vsu.javablog.service.logic.ITagService;
-import vsu.javablog.service.mapper.TagMapper;
+import vsu.javablog.service.mapper.ITagMapper;
+import vsu.javablog.service.mapper.impl.TagMapper;
 import vsu.javablog.service.model.TagDto;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,12 +18,12 @@ import java.util.Optional;
 //@RequiredArgsConstructor
 public class TagService implements ITagService {
     private final TagRepository rep;
-    private final TagMapper map;
+    private final ITagMapper map;
 
     @Autowired
-    public TagService(TagRepository rep, TagMapper map) {
+    public TagService(TagRepository rep) {
         this.rep = rep;
-        this.map = map;
+        this.map = new TagMapper();
     }
 
     @Override
@@ -46,5 +46,10 @@ public class TagService implements ITagService {
     @Override
     public TagDto findByName(String name) {
         return map.fromEntity(rep.findByTag(name));
+    }
+
+    @Override
+    public List<TagDto> getAllTags() {
+        return map.fromEntities(rep.findAll());
     }
 }

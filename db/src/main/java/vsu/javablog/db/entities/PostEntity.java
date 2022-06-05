@@ -1,6 +1,5 @@
 package vsu.javablog.db.entities;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,8 +10,8 @@ import java.util.Set;
 
 @Entity(name = "posts")
 @Table(name = "posts", schema = "tp_twitter")
-@Getter
-@Setter
+//@Getter
+//@Setter
 public class PostEntity {
 
     @Id
@@ -45,7 +44,54 @@ public class PostEntity {
     )
     List<TagEntity> tags;
 
-    @OneToMany(mappedBy = "postId")
+    @OneToMany(mappedBy = "post")
     private Set<CommentEntity> comments;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
+
+    public List<TagEntity> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<TagEntity> tags) {
+        this.tags = tags;
+    }
+
+    public Set<CommentEntity> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<CommentEntity> comments) {
+        this.comments = comments;
+    }
 }

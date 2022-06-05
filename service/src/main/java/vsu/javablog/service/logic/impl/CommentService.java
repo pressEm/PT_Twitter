@@ -1,12 +1,15 @@
 package vsu.javablog.service.logic.impl;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
+import vsu.javablog.db.entities.CommentEntity;
 import vsu.javablog.db.repositories.CommentRepository;
+import vsu.javablog.db.repositories.PostRepository;
+import vsu.javablog.db.repositories.UserRepository;
 import vsu.javablog.service.logic.ICommentService;
-import vsu.javablog.service.mapper.CommentMapper;
+import vsu.javablog.service.mapper.ICommentMapper;
+import vsu.javablog.service.mapper.impl.CommentMapper;
 import vsu.javablog.service.model.CommentDto;
 
 import javax.validation.Valid;
@@ -18,21 +21,24 @@ import java.util.Optional;
 //@RequiredArgsConstructor
 public class CommentService implements ICommentService {
     private final CommentRepository rep;
-    private final CommentMapper map;
+    private final ICommentMapper map;
 
     @Autowired
-    public CommentService(CommentRepository rep, CommentMapper map) {
+    public CommentService(CommentRepository rep, UserRepository uR, PostRepository pR) {
         this.rep = rep;
-        this.map = map;
+        this.map = new CommentMapper(uR, pR);
     }
 
     @Override
     public CommentDto createComment(@Valid CommentDto dto) {
-        return Optional.of(dto)
-            .map(map::toEntity)
-            .map(rep::save)
-            .map(map::fromEntity)
-            .orElseThrow();
+        CommentEntity e = map.toEntity(dto);
+        rep.save(e);
+        return map.fromEntity(e);
+//        return Optional.of(dto)
+//            .map(map::toEntity)
+//            .map(rep::save)
+//            .map(map::fromEntity)
+//            .orElseThrow();
     }
 
     @Override
@@ -51,4 +57,11 @@ public class CommentService implements ICommentService {
     public List<CommentDto> getAllCommentsByPostId(Integer id) {
         return map.fromEntities(rep.findAllByPostId(id));
     }
+
+    @Override
+    public void deleteCommentById(Integer id) {
+        rep.delete(rep.getById(id));
+    }
+
+
 }

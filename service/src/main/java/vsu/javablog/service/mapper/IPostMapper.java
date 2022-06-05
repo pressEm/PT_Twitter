@@ -7,16 +7,9 @@ import vsu.javablog.service.model.PostDto;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
-public interface PostMapper {
-//    @Mapping(target = "comments", ignore = true)
-//    @Mapping(target = "tags", ignore = true)
-//    @Mapping(target = "user", ignore = true)
+public interface IPostMapper {
     PostDto fromEntity(PostEntity entity);
 
-//    @Mapping(target = "comments", ignore = true)
-//    @Mapping(target = "tags", ignore = true)
-//    @Mapping(target = "user", ignore = true)
     PostEntity toEntity(PostDto dto);
 
     List<PostDto> fromEntities(Iterable<PostEntity> entities);

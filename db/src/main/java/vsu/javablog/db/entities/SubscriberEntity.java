@@ -11,8 +11,8 @@ import java.io.Serializable;
 @Entity
 @Table(name = "subscriptions", schema = "tp_twitter")
 //@Validated
-@Getter
-@Setter
+//@Getter
+//@Setter
 public class SubscriberEntity implements Serializable{
 
     @Id
@@ -27,42 +27,28 @@ public class SubscriberEntity implements Serializable{
     @ManyToOne()
     @JoinColumn(name = "subscriber_id", referencedColumnName = "user_id")
     UserEntity friend;
-//
-//    @Column(name = "accepted")
-//    private boolean accepted;
 
-//    public boolean isAccepted() {
-//        return accepted;
-//    }
+    public Integer getId() {
+        return id;
+    }
 
-//    public void setAccepted(boolean accepted) {
-//        this.accepted = accepted;
-//    }
-//
-//    public SubscriberEntity() {
-//    }
-//
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
-//
-//    public UserEntity getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(UserEntity user) {
-//        this.user = user;
-//    }
-//
-//    public UserEntity getFriend() {
-//        return friend;
-//    }
-//
-//    public void setFriend(UserEntity friend) {
-//        this.friend = friend;
-//    }
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
+
+    public UserEntity getFriend() {
+        return friend;
+    }
+
+    public void setFriend(UserEntity friend) {
+        this.friend = friend;
+    }
 }

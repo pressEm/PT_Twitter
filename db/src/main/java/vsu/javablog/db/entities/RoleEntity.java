@@ -15,8 +15,8 @@ import java.io.Serializable;
 @Entity
 @Table(name = "roles", schema = "tp_twitter")
 //@Validated
-@Getter
-@Setter
+//@Getter
+//@Setter
 public class RoleEntity implements Serializable {
 
     @Id
@@ -29,22 +29,19 @@ public class RoleEntity implements Serializable {
     @NotEmpty
     private String roleName;
 
-//    public RoleEntity() {
-//    }
-//
-//    public Long getRoleId() {
-//        return roleId;
-//    }
-//
-//    public void setRoleId(Long role_id) {
-//        this.roleId = role_id;
-//    }
-//
-//    public String getRoleName() {
-//        return roleName;
-//    }
-//
-//    public void setRoleName(String role_name) {
-//        this.roleName = role_name;
-//    }
+    public Integer getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
+    }
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
 }

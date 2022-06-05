@@ -8,9 +8,12 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.List;
 
-@Getter
-@Setter
+//@Getter
+//@Setter
 public class PostDto {
+    @JsonProperty("post_id")
+    private Integer postId;
+
     @JsonProperty("title")
     @NotBlank(message = "title.is-blank")
     @Size(min = 1, max = 50, message = "title.out-of-range")
@@ -24,6 +27,56 @@ public class PostDto {
     @JsonProperty("user_id")
     private Integer userId;
 
+    @JsonProperty("tags")
     private List<TagDto> tags;
+    @JsonProperty("comments")
     private List<CommentDto> comments;
+
+    public Integer getPostId() {
+        return postId;
+    }
+
+    public void setPostId(Integer postId) {
+        this.postId = postId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public List<TagDto> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<TagDto> tags) {
+        this.tags = tags;
+    }
+
+    public List<CommentDto> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<CommentDto> comments) {
+        this.comments = comments;
+    }
 }
