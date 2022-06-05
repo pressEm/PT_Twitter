@@ -49,14 +49,7 @@ public class PostService implements IPostService {
             TagEntity entity = tRep.findByTag(t.getTag());
             tags.add(entity);
         }
-
         rep.save(e);
-
-//        return Optional.of(dto)
-//            .map(map::toEntity)
-//            .map(rep::save)
-//            .map(map::fromEntity)
-//            .orElseThrow();
         return dto;
     }
 
@@ -74,18 +67,35 @@ public class PostService implements IPostService {
             dto.setPostId(e.getId());
             l.add(dto);
         }
-//        return map.fromEntities(rep.findAll());
         return l;
     }
 
     @Override
     public List<PostDto> getAllPostsByUserId(Integer id) {
-        return map.fromEntities(rep.findAllByUserId(id));
+        List<PostEntity> l = rep.findAllByUserId(id);
+        List<PostDto> res = new LinkedList<>();
+        for (PostEntity entity:
+             l) {
+            PostDto dto = map.fromEntity(entity);
+            dto.setPostId(entity.getId());
+            res.add(dto);
+        }
+        return res;
+//        return map.fromEntities(rep.findAllByUserId(id));
     }
 
     @Override
     public List<PostDto> getAllPostsByTagId(Integer id) {
-        return map.fromEntities(rep.findAllPostsByTagId(id));
+//        return map.fromEntities(rep.findAllPostsByTagId(id));
+        List<PostEntity> l = rep.findAllPostsByTagId(id);
+        List<PostDto> res = new LinkedList<>();
+        for (PostEntity entity:
+            l) {
+            PostDto dto = map.fromEntity(entity);
+            dto.setPostId(entity.getId());
+            res.add(dto);
+        }
+        return res;
     }
 
     @Override

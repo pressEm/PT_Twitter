@@ -47,4 +47,9 @@ public class PostController {
     public List<PostDto> getAllPostsByTagId(@PathVariable Integer tagId){
         return service.getAllPostsByTagId(tagId);
     }
+
+    @GetMapping("/user/{userId}")
+    public List<PostDto> getAllPostsByUserId(@PathVariable Integer userId){
+        return service.getAllPostsByUserId(userId);
+    }
 }
