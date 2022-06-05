@@ -3,7 +3,10 @@ package vsu.javablog.service.logic.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vsu.javablog.db.entities.PostEntity;
+import vsu.javablog.db.entities.TagEntity;
+import vsu.javablog.db.repositories.CommentRepository;
 import vsu.javablog.db.repositories.PostRepository;
+import vsu.javablog.db.repositories.TagRepository;
 import vsu.javablog.db.repositories.UserRepository;
 import vsu.javablog.service.logic.IPostService;
 import vsu.javablog.service.mapper.IPostMapper;
@@ -11,11 +14,11 @@ import vsu.javablog.service.mapper.impl.CommentMapper;
 import vsu.javablog.service.mapper.impl.PostMapper;
 import vsu.javablog.service.mapper.impl.TagMapper;
 import vsu.javablog.service.model.PostDto;
+import vsu.javablog.service.model.TagDto;
 
 import javax.validation.Valid;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 //@Validated
@@ -23,20 +26,38 @@ import java.util.Optional;
 public class PostService implements IPostService {
     private final PostRepository rep;
     private final IPostMapper map;
+    private final TagRepository tRep;
+    private final CommentRepository cRep;
+    private final UserRepository uRep;
 
     @Autowired
-    public PostService(PostRepository rep, UserRepository uR) {
+    public PostService(PostRepository rep, UserRepository uR, TagRepository tRep, CommentRepository cRep, UserRepository uRep) {
         this.rep = rep;
+        this.tRep = tRep;
+        this.cRep = cRep;
+        this.uRep = uRep;
         this.map = new PostMapper(new CommentMapper(uR, rep), new TagMapper(), uR);
     }
 
     @Override
     public PostDto createPost(@Valid PostDto dto) {
-        return Optional.of(dto)
-            .map(map::toEntity)
-            .map(rep::save)
-            .map(map::fromEntity)
-            .orElseThrow();
+        PostEntity e = map.toEntity(dto);
+
+        List<TagEntity> tags = new LinkedList<>();
+        for (TagDto t :
+            dto.getTags()) {
+            TagEntity entity = tRep.findByTag(t.getTag());
+            tags.add(entity);
+        }
+
+        rep.save(e);
+
+//        return Optional.of(dto)
+//            .map(map::toEntity)
+//            .map(rep::save)
+//            .map(map::fromEntity)
+//            .orElseThrow();
+        return dto;
     }
 
     @Override
