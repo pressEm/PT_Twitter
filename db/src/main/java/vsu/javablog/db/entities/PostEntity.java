@@ -47,6 +47,9 @@ public class PostEntity {
     @OneToMany(mappedBy = "post")
     private Set<CommentEntity> comments;
 
+//    @OneToMany(mappedBy = "likedPosts")
+//    private Set<UserEntity> users;
+
     public Integer getId() {
         return id;
     }

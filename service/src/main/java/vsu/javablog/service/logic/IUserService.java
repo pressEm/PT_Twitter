@@ -1,5 +1,6 @@
 package vsu.javablog.service.logic;
 
+import vsu.javablog.service.model.PostDto;
 import vsu.javablog.service.model.UserDto;
 
 import javax.validation.Valid;
@@ -15,4 +16,6 @@ public interface IUserService {
     void deleteUserById(Integer id);
 
     List<UserDto> getAllUSers();
+
+    List<PostDto> getAllLikedPosts(Integer userId);
 }

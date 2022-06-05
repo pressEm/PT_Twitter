@@ -52,4 +52,12 @@ public class PostController {
     public List<PostDto> getAllPostsByUserId(@PathVariable Integer userId){
         return service.getAllPostsByUserId(userId);
     }
+    @PostMapping("/{postId}/like/{userId}")
+    public void setLike(@PathVariable Integer postId, @PathVariable Integer userId){
+        service.createLike(postId, userId);
+    }
+    @DeleteMapping("/{postId}/like/{userId}")
+    public void deleteLike(@PathVariable Integer postId, @PathVariable Integer userId){
+        service.deleteLike(postId, userId);
+    }
 }

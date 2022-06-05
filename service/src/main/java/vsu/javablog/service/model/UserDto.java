@@ -30,9 +30,19 @@ public class UserDto {
     @NotNull(message = "email.is-null")
     private String email;
 
+    private List<PostDto> likedPosts;
+
     private List<CommentDto> comments;
 
     private List<PostDto> posts;
+
+    public List<PostDto> getLikedPosts() {
+        return likedPosts;
+    }
+
+    public void setLikedPosts(List<PostDto> likedPosts) {
+        this.likedPosts = likedPosts;
+    }
 
     public String getUsername() {
         return username;

@@ -29,4 +29,6 @@ public interface PostRepository extends CrudRepository<PostEntity, Integer>, Jpa
     List<PostEntity> findByUser(UserEntity user);
 
     List<PostEntity> findAllByUserId(Integer userId);
+
+
 }
