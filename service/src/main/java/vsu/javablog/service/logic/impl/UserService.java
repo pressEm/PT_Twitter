@@ -3,6 +3,7 @@ package vsu.javablog.service.logic.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
+import vsu.javablog.db.entities.PostEntity;
 import vsu.javablog.db.entities.UserEntity;
 import vsu.javablog.db.repositories.PostRepository;
 import vsu.javablog.db.repositories.UserRepository;
@@ -12,6 +13,7 @@ import vsu.javablog.service.mapper.impl.CommentMapper;
 import vsu.javablog.service.mapper.impl.PostMapper;
 import vsu.javablog.service.mapper.impl.TagMapper;
 import vsu.javablog.service.mapper.impl.UserMapper;
+import vsu.javablog.service.model.PostDto;
 import vsu.javablog.service.model.UserDto;
 
 import javax.validation.Valid;
@@ -25,13 +27,14 @@ import java.util.Optional;
 public class UserService implements IUserService {
     private final UserRepository rep;
     private final IUserMapper map;
+    private final PostMapper pM;
 
     @Autowired
     public UserService(UserRepository rep, PostRepository pR) {//, UserMapper map) {
         this.rep = rep;
         CommentMapper m = new CommentMapper(rep, pR);
-        this.map = new UserMapper(new PostMapper(m, new TagMapper(), rep),
-            m);
+        pM = new PostMapper(m, new TagMapper(), rep);
+        this.map = new UserMapper(pM, m);
     }
 
     @Override
@@ -84,4 +87,19 @@ public class UserService implements IUserService {
         return map.fromEntities(rep.findAll());
 //        return dtos;
     }
+
+    @Override
+    public List<PostDto> getAllLikedPosts(Integer userId) {
+        UserEntity u = rep.getById(userId);
+        List<PostDto> res = new LinkedList<>();
+
+        for (PostEntity p :
+            u.getLikedPosts()) {
+            PostDto buf = pM.fromEntity(p);
+            buf.setPostId(p.getId());
+            res.add(buf);
+        }
+        return res;
+    }
+
 }

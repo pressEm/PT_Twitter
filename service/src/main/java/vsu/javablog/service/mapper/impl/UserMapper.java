@@ -36,19 +36,27 @@ public class UserMapper implements IUserMapper {
 
         List<PostDto> posts = new LinkedList<>();
         List<CommentDto> comments = new LinkedList<>();
+        List<PostDto> likedPosts = new LinkedList<>();
 
         for (PostEntity p :
             entity.getPosts()) {
-            posts.add(pM.fromEntity(p));
+            PostDto dto1 =pM.fromEntity(p);
+            dto1.setPostId(p.getId());
+            posts.add(dto1);
         }
 
         for (CommentEntity c :
             entity.getComments()) {
             comments.add(cM.fromEntity(c));
         }
+        for (PostEntity p :
+            entity.getLikedPosts()) {
+            likedPosts.add(pM.fromEntity(p));
+        }
 
         dto.setPosts(posts);
         dto.setComments(comments);
+        dto.setLikedPosts(likedPosts);
 
         return dto;
     }
@@ -67,6 +75,7 @@ public class UserMapper implements IUserMapper {
 
         List<PostEntity> posts = new LinkedList<>();
         List<CommentEntity> comments = new LinkedList<>();
+        List<PostEntity> likedPosts = new LinkedList<>();
 
         for (PostDto p :
             dto.getPosts()) {
@@ -78,8 +87,14 @@ public class UserMapper implements IUserMapper {
             comments.add(cM.toEntity(c));
         }
 
+        for (PostDto p :
+            dto.getLikedPosts()) {
+            likedPosts.add(pM.toEntity(p));
+        }
+
         e.setPosts(posts);
         e.setComments(comments);
+        e.setLikedPosts(likedPosts);
 
         return e;
     }
@@ -103,6 +118,9 @@ public class UserMapper implements IUserMapper {
 
             if (!e.getPosts().equals(entity.getPosts()))
                 entity.setPosts(e.getPosts());
+
+            if(!e.getLikedPosts().equals(entity.getLikedPosts()))
+                entity.setLikedPosts(e.getLikedPosts());
         }
     }
 

@@ -17,4 +17,7 @@ public interface IPostService {
     List<PostDto> getAllPostsByTagId(Integer id);
 
     PostDto getPost(Integer postId);
+
+    void createLike(Integer postId, Integer userId);
+    void deleteLike(Integer postId, Integer userId);
 }

@@ -39,6 +39,7 @@ public class PostMapper implements IPostMapper {
         dto.setTitle(entity.getTitle());
         dto.setContent(entity.getContent());
         dto.setUserId(entity.getUser().getId());
+        dto.setPostId(entity.getId());
 
         if (entity.getTags()!=null){
             List<TagDto> tags = new LinkedList<>();

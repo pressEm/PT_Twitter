@@ -49,9 +49,27 @@ public class UserEntity implements Serializable {
     @OneToMany(mappedBy = "user")
     private List<PostEntity> posts;
 
+    @ManyToMany
+    @JoinTable(
+        joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "post_id", referencedColumnName = "post_id"),
+        name = "likes",
+        schema = "tp_twitter"
+    )
+    private List<PostEntity> likedPosts;
+
 //    public UserEntity() {
 //    }
-//
+
+
+    public List<PostEntity> getLikedPosts() {
+        return likedPosts;
+    }
+
+    public void setLikedPosts(List<PostEntity> likedPosts) {
+        this.likedPosts = likedPosts;
+    }
+
     public Integer getId() {
         return id;
     }

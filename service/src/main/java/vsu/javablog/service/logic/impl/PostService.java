@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vsu.javablog.db.entities.PostEntity;
 import vsu.javablog.db.entities.TagEntity;
+import vsu.javablog.db.entities.UserEntity;
 import vsu.javablog.db.repositories.CommentRepository;
 import vsu.javablog.db.repositories.PostRepository;
 import vsu.javablog.db.repositories.TagRepository;
@@ -74,8 +75,8 @@ public class PostService implements IPostService {
     public List<PostDto> getAllPostsByUserId(Integer id) {
         List<PostEntity> l = rep.findAllByUserId(id);
         List<PostDto> res = new LinkedList<>();
-        for (PostEntity entity:
-             l) {
+        for (PostEntity entity :
+            l) {
             PostDto dto = map.fromEntity(entity);
             dto.setPostId(entity.getId());
             res.add(dto);
@@ -89,7 +90,7 @@ public class PostService implements IPostService {
 //        return map.fromEntities(rep.findAllPostsByTagId(id));
         List<PostEntity> l = rep.findAllPostsByTagId(id);
         List<PostDto> res = new LinkedList<>();
-        for (PostEntity entity:
+        for (PostEntity entity :
             l) {
             PostDto dto = map.fromEntity(entity);
             dto.setPostId(entity.getId());
@@ -105,4 +106,27 @@ public class PostService implements IPostService {
         dto.setPostId(e.getId());
         return dto;
     }
+
+    @Override
+    public void createLike(Integer postId, Integer userId) {
+        UserEntity u = uRep.getById(userId);
+        PostEntity p = rep.getById(postId);
+
+        if (!u.getLikedPosts().contains(p)) {
+            u.getLikedPosts().add(p);
+            uRep.save(u);
+        }
+    }
+
+    @Override
+    public void deleteLike(Integer postId, Integer userId) {
+        UserEntity u = uRep.getById(userId);
+        PostEntity p = rep.getById(postId);
+
+        if (u.getLikedPosts().contains(p)) {
+            u.getLikedPosts().remove(p);
+            uRep.save(u);
+        }
+    }
+
 }
