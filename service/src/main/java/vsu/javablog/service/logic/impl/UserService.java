@@ -37,7 +37,7 @@ public class UserService implements IUserService {
     private final PostMapper pM;
 
     @Autowired
-    public UserService(UserRepository rep, PostRepository pR) {//, UserMapper map) {
+    public UserService(UserRepository rep, PostRepository pR, RoleRepository repository) {//, UserMapper map) {
         this.rep = rep;
         this.roleRepository = repository;
         CommentMapper m = new CommentMapper(rep, pR);
