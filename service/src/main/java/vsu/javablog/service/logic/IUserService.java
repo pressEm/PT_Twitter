@@ -1,5 +1,6 @@
 package vsu.javablog.service.logic;
 
+import org.springframework.security.core.userdetails.UserDetailsService;
 import vsu.javablog.service.model.PostDto;
 import vsu.javablog.service.model.UserDto;
 

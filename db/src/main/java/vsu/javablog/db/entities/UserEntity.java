@@ -1,5 +1,9 @@
 package vsu.javablog.db.entities;
 
+//import org.hibernate.mapping.Set;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
@@ -7,13 +11,11 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Table(name = "users", schema = "tp_twitter")
 @Validated
-//@Getter
-//@Setter
 public class UserEntity implements Serializable {
 
     @Id
@@ -35,8 +37,6 @@ public class UserEntity implements Serializable {
     @NotEmpty(message = "Password can not be empty")
     private String password;
 
-//    @Column(name = "profile_picture")
-//    private String profilePicture;
 
     @ManyToOne()
     @JoinColumn(name = "role")
