@@ -1,11 +1,16 @@
 package vsu.javablog.service.logic.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import vsu.javablog.db.entities.PostEntity;
+import vsu.javablog.db.entities.RoleEntity;
 import vsu.javablog.db.entities.UserEntity;
 import vsu.javablog.db.repositories.PostRepository;
+import vsu.javablog.db.repositories.RoleRepository;
 import vsu.javablog.db.repositories.UserRepository;
 import vsu.javablog.service.logic.IUserService;
 import vsu.javablog.service.mapper.IUserMapper;
@@ -27,23 +32,32 @@ import java.util.Optional;
 public class UserService implements IUserService {
     private final UserRepository rep;
     private final IUserMapper map;
+    private final RoleRepository roleRepository;
+
     private final PostMapper pM;
 
     @Autowired
     public UserService(UserRepository rep, PostRepository pR) {//, UserMapper map) {
         this.rep = rep;
+        this.roleRepository = repository;
         CommentMapper m = new CommentMapper(rep, pR);
         pM = new PostMapper(m, new TagMapper(), rep);
         this.map = new UserMapper(pM, m);
     }
 
     @Override
-    public UserDto createUser(@Valid UserDto dto) {
-        return Optional.of(dto)
-            .map(map::toEntity)
-            .map(rep::save)
-            .map(map::fromEntity)
-            .orElseThrow();
+    public UserDto createUser(UserDto dto) {
+        UserEntity entity = map.toEntity(dto);
+        RoleEntity role = roleRepository.findById(2);
+        entity.setRole(role);
+        rep.save(entity);
+        return dto;
+//        entity.setId(2);
+//        return Optional.of(dto)
+//            .map(map::toEntity)
+//            .map(rep::save)
+//            .map(map::fromEntity)
+//            .orElseThrow();
         //return null;
     }
 

@@ -1,19 +1,10 @@
 package vsu.javablog.db.entities;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.validation.annotation.Validated;
-
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
-@Table(name = "subscriptions", schema = "tp_twitter")
-//@Validated
-//@Getter
-//@Setter
-public class SubscriberEntity implements Serializable{
+@Table(name="subscriptions", schema = "tp_twitter")
+public class SubscriptionEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +18,20 @@ public class SubscriberEntity implements Serializable{
     @ManyToOne()
     @JoinColumn(name = "subscriber_id", referencedColumnName = "user_id")
     UserEntity friend;
+
+    @Column(name = "is_accepted")
+    private boolean accepted;
+
+    public boolean isAccepted() {
+        return accepted;
+    }
+
+    public void setAccepted(boolean accepted) {
+        this.accepted = accepted;
+    }
+
+    public SubscriptionEntity() {
+    }
 
     public Integer getId() {
         return id;
