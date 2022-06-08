@@ -11,7 +11,7 @@
 - [Приглашение на Miro](https://miro.com/app/board/uXjVOGN-Ch4=/?invite_link_id=962277482334)
 - [Техническое задание](https://github.com/pressEm/PT_Twitter/files/8309808/T3_ver19032022.docx)
 - [Курсовая работа](https://github.com/pressEm/PT_Twitter/blob/main/KursovayaTwitter.docx)
-- [Презентация] (https://github.com/pressEm/PT_Twitter/blob/main/%D0%BF%D1%80%D0%B5%D0%B7%D0%B0.pptx)
+- [Презентация](https://github.com/pressEm/PT_Twitter/blob/main/%D0%BF%D1%80%D0%B5%D0%B7%D0%B0.pptx)
 - [Swagger](https://app.swaggerhub.com/apis/TP_Twitter/TP_Twitter/1.0.0#/pet/findPetsByStatus)
 
 **Ссылка на сваггер побилась/не сохранилась**, не понимаю, что произошло, но теперь там стандартный petstore, который предоставляет сваггер в виде тестового проекта, а не апи для этого проекта. В связи с чем привожу апи здесь (до тех пор, пока не разберусь и не поправлю сваггер)
