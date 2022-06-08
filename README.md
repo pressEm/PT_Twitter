@@ -13,6 +13,9 @@
 - [Курсовая работа](https://github.com/pressEm/PT_Twitter/blob/main/KursovayaTwitter.docx)
 - [Презентация](https://github.com/pressEm/PT_Twitter/blob/main/%D0%BF%D1%80%D0%B5%D0%B7%D0%B0.pptx)
 - [Swagger](https://app.swaggerhub.com/apis/TP_Twitter/TP_Twitter/1.0.0#/pet/findPetsByStatus)
+- [Видео презентации проекта(для скачивания)](https://github.com/pressEm/PT_Twitter/blob/main/bandicam%202022-06-08%2011-13-25-721.mp4)
+- [Видео с обзором кода Ч1 (для скачивания)](https://github.com/pressEm/PT_Twitter/blob/main/bandicam%202022-06-08%2011-32-17-839.mp4)
+- 
 
 **Ссылка на сваггер побилась/не сохранилась**, не понимаю, что произошло, но теперь там стандартный petstore, который предоставляет сваггер в виде тестового проекта, а не апи для этого проекта. В связи с чем привожу апи здесь (до тех пор, пока не разберусь и не поправлю сваггер)
 
