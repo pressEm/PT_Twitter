@@ -21,22 +21,23 @@ public class UserController {
         this.service = service;
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping
     public List<UserDto> getAllUsers(){
         return service.getAllUSers();
     }
 
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("/{userId}")
     public UserDto getUserById(@PathVariable Integer userId){
         return service.getUserById(userId);
     }
 
-    @GetMapping("/{userId}/subscriptions")
-    public List<UserDto> getSubscriptions(@PathVariable Integer userId){
-        //Todo: make this method in service
-        return null;
-    }
+//    @GetMapping("/{userId}/subscriptions")
+//    public List<UserDto> getSubscriptions(@PathVariable Integer userId){
+//        //Todo: make this method in service
+//        return null;
+//    }
 
     @PostMapping()
     ResponseEntity<UserDto> add(@RequestBody UserDto userDto) {
@@ -44,17 +45,17 @@ public class UserController {
     }
 
 
-    @PreAuthorize("hasRole('ADMIN')")
-    @DeleteMapping("/{userId}/subscriptions/{subionId}")
-    public void deleteSubscription(@PathVariable Integer userId,
-                                   @PathVariable Integer subionId){
-        //Todo: make this method in service
-
-    }
-
-    @GetMapping("/{userId}/subscribers")
-    public List<UserDto> getUserSubscribers(@PathVariable Integer userId){
-        //Todo: make this also
-        return null;
-    }
+//    @PreAuthorize("hasRole('ADMIN')")
+//    @DeleteMapping("/{userId}/subscriptions/{subionId}")
+//    public void deleteSubscription(@PathVariable Integer userId,
+//                                   @PathVariable Integer subionId){
+//        //Todo: make this method in service
+//
+//    }
+//
+//    @GetMapping("/{userId}/subscribers")
+//    public List<UserDto> getUserSubscribers(@PathVariable Integer userId){
+//        //Todo: make this also
+//        return null;
+//    }
 }

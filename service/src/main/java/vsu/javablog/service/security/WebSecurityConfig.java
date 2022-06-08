@@ -42,10 +42,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .csrf().disable()
             .authorizeRequests()
             .antMatchers("/friends/**").hasRole("USER")
-            .antMatchers("/users/**", "/posts/**", "/posts", "/comments/**", "/comments", "/tags/**", "tags").hasAnyRole("USER", "ADMIN")
+            .antMatchers("/posts/**", "/posts", "/comments/**", "/comments", "/tags/**", "tags").hasAnyRole("USER")
 //            .antMatchers("/posts/**", "/posts").hasAnyRole("USER", "ADMIN")
 //            .antMatchers("/comments/**", "/comments").hasAnyRole("USER", "ADMIN")
 //            .antMatchers("/tags/**", "tags").hasAnyRole("USER", "ADMIN")
+            .antMatchers("/users").permitAll()
             .anyRequest().permitAll()
             .and()
             .httpBasic();
