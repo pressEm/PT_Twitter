@@ -1,6 +1,7 @@
 package vsu.javablog.service.mapper.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import vsu.javablog.db.entities.CommentEntity;
 import vsu.javablog.db.entities.PostEntity;
@@ -65,6 +66,7 @@ public class UserMapper implements IUserMapper {
 
     @Override
     public UserEntity toEntity(UserDto dto) {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         if(dto == null){
             return null;
         }
@@ -73,7 +75,7 @@ public class UserMapper implements IUserMapper {
 
         e.setUsername(dto.getUsername());
         e.setEmail(dto.getEmail());
-        e.setPassword(dto.getPassword());
+        e.setPassword(bCryptPasswordEncoder.encode(dto.getPassword()));
 
         List<PostEntity> posts = new LinkedList<>();
         List<CommentEntity> comments = new LinkedList<>();

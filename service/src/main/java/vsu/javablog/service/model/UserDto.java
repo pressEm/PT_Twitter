@@ -15,6 +15,18 @@ import java.util.List;
 //@Setter
 //@RequiredArgsConstructor
 public class UserDto {
+
+//    public Integer getPostId() {
+//        return postId;
+//    }
+//
+//    public void setPostId(Integer postId) {
+//        this.postId = postId;
+//    }
+//
+//    @JsonProperty("user_id")
+//    private Integer postId;
+
     @JsonProperty("username")
     @NotBlank(message = "username.is-blank")
     @Size(min = 1, max = 100, message = "username.out-of-range")
