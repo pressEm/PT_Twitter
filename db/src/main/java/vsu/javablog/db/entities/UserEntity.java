@@ -40,7 +40,7 @@ public class UserEntity implements Serializable {
 
     @ManyToOne()
     @JoinColumn(name = "role")
-    @NotEmpty(message = "Roles can not be null")
+//    @NotEmpty(message = "Roles can not be null")
     private RoleEntity role;
 
     @OneToMany(mappedBy= "user")

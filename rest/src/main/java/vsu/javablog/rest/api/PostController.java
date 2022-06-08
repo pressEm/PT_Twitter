@@ -1,6 +1,7 @@
 package vsu.javablog.rest.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import vsu.javablog.service.logic.impl.PostService;
 import vsu.javablog.service.model.PostDto;
@@ -22,6 +23,7 @@ public class PostController {
         return service.createPost(dto);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping
     public List<PostDto> getAllPosts(){
         return service.getAllPosts();
@@ -38,6 +40,7 @@ public class PostController {
         return null;
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{postId}")
     public void deletePostById(@PathVariable Integer postId){
         service.deletePostById(postId);

@@ -1,6 +1,7 @@
 package vsu.javablog.rest.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import lombok.RequiredArgsConstructor;
 import vsu.javablog.service.logic.impl.CommentService;
@@ -25,6 +26,8 @@ public class CommentController {
     public CommentDto getCommById(@PathVariable Integer commId){
         return service.getCommentById(commId);
     }
+
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{commId}")
     public void deleteCommentById(@PathVariable Integer commId){
         service.deleteCommentById(commId);

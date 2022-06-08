@@ -49,7 +49,14 @@ public class UserService implements IUserService {
     public UserDto createUser(UserDto dto) {
         UserEntity entity = map.toEntity(dto);
         RoleEntity role = roleRepository.findById(2);
-        entity.setRole(role);
+        if (role != null){
+            System.out.println("role not null: " + role.getRoleName());
+            entity.setRole(role);
+        }
+        else {
+            System.out.println("!!! role is null: " + role.getRoleName());
+
+        }
         rep.save(entity);
         return dto;
 //        entity.setId(2);

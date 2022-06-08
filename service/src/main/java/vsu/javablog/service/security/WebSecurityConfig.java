@@ -16,9 +16,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-//@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
 
 
     //    @Autowired
@@ -39,56 +38,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
 
-        httpSecurity.authorizeRequests()
+        httpSecurity
+            .csrf().disable()
+            .authorizeRequests()
             .antMatchers("/friends/**").hasRole("USER")
+            .antMatchers("/users/**", "/posts/**", "/posts", "/comments/**", "/comments", "/tags/**", "tags").hasAnyRole("USER", "ADMIN")
+//            .antMatchers("/posts/**", "/posts").hasAnyRole("USER", "ADMIN")
+//            .antMatchers("/comments/**", "/comments").hasAnyRole("USER", "ADMIN")
+//            .antMatchers("/tags/**", "tags").hasAnyRole("USER", "ADMIN")
             .anyRequest().permitAll()
             .and()
             .httpBasic();
     }
-
-
-
-//        httpSecurity
-//            .csrf()
-//            .disable()
-//            .authorizeRequests()
-            //Доступ только для не зарегистрированных пользователей
-//            .antMatchers("/registration").not().fullyAuthenticated()
-            //Доступ только для пользователей с ролью Администратор
-//            .antMatchers("/users/**").hasRole("ADMIN")
-//            .antMatchers("/users/**").hasRole("ADMIN")
-//
-//            .antMatchers("/friends/**").hasRole("USER")
-//            .anyRequest().authenticated()
-//            .and()
-//            .httpBasic();
-            //Доступ разрешен всем пользователей
-//            .antMatchers("/", "/resources/**").permitAll()
-            //Все остальные страницы требуют аутентификации
-//            .anyRequest().authenticated()
-//            .and()
-//            //Настройка для входа в систему
-//            .formLogin()
-//            .loginPage("/login")
-//            //Перенарпавление на главную страницу после успешного входа
-//            .defaultSuccessUrl("/")
-//            .permitAll()
-//            .and()
-//            .logout()
-//            .permitAll()
-//            .logoutSuccessUrl("/");
-//    }
-//
-//    @Autowired
-//    protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder());
-//    }
-
-
-//    @Override
-//    public void configure(WebSecurity web) throws Exception {
-//        super.configure(web);
-//    }
 
     @Bean
     protected DaoAuthenticationProvider daoAuthenticationProvider(){
