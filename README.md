@@ -10,7 +10,7 @@
 - [Miro](https://miro.com/app/board/uXjVOGN-Ch4=/)
 - [Приглашение на Miro](https://miro.com/app/board/uXjVOGN-Ch4=/?invite_link_id=962277482334)
 - [Техническое задание](https://github.com/pressEm/PT_Twitter/files/8309808/T3_ver19032022.docx)
-- [Курсовая работа](https://github.com/pressEm/PT_Twitter/files/8305183/default.docx)
+- [Курсовая работа](https://github.com/pressEm/PT_Twitter/blob/main/KursovayaTwitter.docx)
 - [Swagger](https://app.swaggerhub.com/apis/TP_Twitter/TP_Twitter/1.0.0#/pet/findPetsByStatus)
 - [Uploading KursovayaTwitter.docx…]()
 
